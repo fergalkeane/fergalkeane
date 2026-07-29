@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BlueDrop Medical — Case Study · Fergal Keane</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+@font-face{
+  font-family:'Space Grotesk';
+  src:url('../fonts/SpaceGrotesk-VariableFont_wght.ttf') format('truetype');
+  font-weight:300 700;font-style:normal;font-display:swap;
+}
+:root{
+  --font-display:'Space Grotesk','Archivo',system-ui,sans-serif;
+  --font-sans:'Archivo',system-ui,sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,monospace;
+  --ink:#0d0d0d;--ink-soft:#1a1a1a;--muted:#8a8a8a;--muted-2:#b5b5b5;
+  --line:#e6e6e6;--line-soft:#efefef;--paper:#fff;--paper-2:#f5f8fa;
+  --accent:#2a8fc4;            /* BlueDrop link blue */
+  --light:#49B7E9;             /* BlueDrop light */
+  --dark:#205269;             /* BlueDrop dark */
+  --turq:#40F5CC;             /* BlueDrop turquoise */
+  --royal:#405CF5;           /* BlueDrop royal */
+  --ketchup:#E85F71;         /* Ketchup CTA */
+  --maxw:1360px;--pad:56px;
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+a{color:inherit;text-decoration:none;}
+img{display:block;max-width:100%;}
+::selection{background:var(--light);color:#fff;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad);}
+.lbl{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);}
+.accent{color:var(--accent);}
+
+/* —— NAV —— */
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line-soft);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;}
+.brand{display:flex;align-items:baseline;gap:12px;}
+.brand b{font-family:var(--font-display);font-weight:800;font-size:15px;letter-spacing:.04em;text-transform:uppercase;}
+.brand span{font-family:var(--font-mono);font-size:10px;letter-spacing:.2em;color:var(--muted);}
+.nav-links{display:flex;align-items:center;gap:34px;}
+.nav-links a{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);position:relative;padding:4px 0;}
+.nav-links a:hover{color:var(--ink);}
+.nav-toggle{display:none;}
+
+/* —— BACK —— */
+.backbar{padding:30px 0 0;}
+.back-link{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
+.back-link:hover{color:var(--accent);}
+
+/* —— HERO —— */
+.hero{padding:22px 0 0;}
+.hero-banner{position:relative;border-radius:16px;overflow:hidden;min-height:clamp(420px,48vw,580px);display:flex;background:var(--dark);}
+.hero-banner img.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(104deg,rgba(20,46,60,.94) 0%,rgba(24,62,84,.78) 44%,rgba(32,82,105,.28) 100%);z-index:1;}
+.hero-content{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:space-between;gap:48px;padding:clamp(34px,4vw,60px);width:100%;color:#fff;}
+.hero-content .lbl{color:rgba(255,255,255,.62);}
+.hero-crown{display:flex;align-items:center;gap:13px;margin-bottom:4px;}
+.hero-crown svg{color:var(--light);}
+.hero-crown .est{font-family:var(--font-mono);font-size:11px;letter-spacing:.3em;color:var(--light);text-transform:uppercase;}
+.hero-title{font-family:var(--font-display);font-weight:800;font-size:clamp(52px,8.4vw,108px);line-height:.92;letter-spacing:-.03em;margin:14px 0 16px;}
+.hero-title span{font-weight:300;}
+.hero-tagline{font-size:clamp(15px,1.5vw,19px);color:rgba(255,255,255,.86);font-weight:400;letter-spacing:.01em;max-width:48ch;}
+.hero-meta{display:flex;flex-wrap:wrap;gap:clamp(38px,6vw,90px);}
+.hero-meta .lbl{color:rgba(255,255,255,.5);margin-bottom:8px;}
+.hero-meta .mv{font-size:15px;color:#fff;font-weight:500;}
+
+/* —— CASE BODY —— */
+.case-body{padding:84px 0 0;}
+.case-grid{display:grid;grid-template-columns:minmax(220px,290px) 1fr;column-gap:clamp(40px,6vw,104px);align-items:start;}
+.case-meta{display:flex;flex-direction:column;gap:34px;}
+.meta-item .meta-val{font-size:17px;color:var(--ink);font-weight:400;margin:9px 0 0;}
+.check-list{list-style:none;margin:11px 0 0;padding:0;display:flex;flex-direction:column;gap:13px;}
+.check-list li{display:flex;align-items:center;gap:11px;font-size:14px;font-weight:500;color:var(--ink-soft);}
+.check-list svg{flex:none;color:var(--accent);}
+.meta-divider{height:1px;background:var(--line);margin:4px 0;}
+.stats{display:flex;gap:44px;}
+.stat-num{font-family:var(--font-display);font-weight:800;font-size:38px;letter-spacing:-.03em;margin:0 0 6px;color:var(--dark);}
+
+.case-content{display:flex;flex-direction:column;gap:64px;}
+.case-block .lbl{display:block;margin-bottom:18px;}
+.case-h{font-family:var(--font-display);font-weight:300;font-size:clamp(27px,3.3vw,40px);line-height:1.15;letter-spacing:-.015em;color:var(--ink);margin:0 0 22px;max-width:20ch;}
+.case-p{font-size:16px;line-height:1.65;color:var(--muted);max-width:58ch;margin:0;}
+.case-p + .case-p{margin-top:18px;}
+
+/* —— IMPACT —— */
+.impact{background:var(--dark);color:#fff;border-radius:4px;padding:clamp(40px,5vw,68px);position:relative;overflow:hidden;}
+.impact::after{content:"";position:absolute;right:-40px;bottom:-40px;width:220px;height:220px;border:1px solid rgba(73,183,233,.4);border-radius:50%;}
+.impact .lbl{color:rgba(255,255,255,.45);display:block;margin-bottom:30px;}
+.impact h2{font-family:var(--font-display);font-weight:800;font-size:clamp(28px,3.7vw,48px);line-height:1.12;letter-spacing:-.02em;margin:0;max-width:18ch;position:relative;z-index:1;}
+.impact h2 em{font-style:normal;color:var(--light);}
+
+/* —— SECTIONS —— */
+.case-section{padding:96px 0 0;}
+.sec-head .lbl{display:block;margin-bottom:20px;}
+.sec-title{font-family:var(--font-display);font-weight:300;font-size:clamp(27px,3.3vw,40px);line-height:1.12;letter-spacing:-.015em;margin:0 0 14px;max-width:22ch;}
+.sec-lead{font-size:16px;line-height:1.65;color:var(--muted);max-width:62ch;margin:0;}
+
+/* —— SYMBOL / CONSTRUCTION —— */
+.symbol{margin-top:clamp(44px,5vw,72px);display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,3vw,40px);align-items:stretch;}
+.panel{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;}
+.panel.dark{background:#1a1a1a;border-color:#1a1a1a;}
+.panel-pad{padding:clamp(22px,2.4vw,32px);}
+.panel-pad .lbl{display:block;margin-bottom:6px;}
+.panel-pad.dark .lbl{color:rgba(255,255,255,.45);}
+.panel-pad h3{font-family:var(--font-display);font-weight:600;font-size:19px;letter-spacing:-.01em;margin:0;color:var(--ink);}
+.panel-pad.dark h3{color:#fff;}
+.panel img{width:100%;height:auto;display:block;}
+.panel .img-frame{padding:clamp(8px,1.5vw,20px);}
+.construct-pair{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,3vw,40px);margin-top:clamp(28px,3vw,40px);}
+@media(max-width:880px){.symbol{grid-template-columns:1fr;}.construct-pair{grid-template-columns:1fr;}}
+
+/* —— LOCKUPS —— */
+.lockups{margin-top:clamp(44px,5vw,72px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,3vw,40px);}
+.lockups .panel .img-frame{display:flex;align-items:center;justify-content:center;min-height:240px;}
+@media(max-width:760px){.lockups{grid-template-columns:1fr;}}
+
+/* —— PALETTE —— */
+.palette{margin-top:clamp(40px,4vw,60px);display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+.sw{padding:26px 20px 22px;display:flex;flex-direction:column;justify-content:flex-end;min-height:188px;color:#fff;}
+.sw .sw-name{font-family:var(--font-display);font-weight:600;font-size:15px;margin:0 0 4px;}
+.sw .sw-hex{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;opacity:.85;}
+@media(max-width:760px){.palette{grid-template-columns:1fr 1fr;}.sw{min-height:128px;}}
+@media(max-width:440px){.palette{grid-template-columns:1fr;}}
+
+/* —— WEB SHOTS —— */
+.webshots{display:flex;flex-direction:column;gap:clamp(56px,7vw,96px);margin-top:clamp(44px,5vw,72px);}
+.shot{display:grid;grid-template-columns:minmax(210px,280px) 1fr;column-gap:clamp(34px,5vw,72px);align-items:start;}
+.shot .shot-cap{grid-column:1;}
+.shot > *:not(.shot-cap){grid-column:2;}
+.shot.flip{grid-template-columns:1fr minmax(210px,280px);}
+.shot.flip .shot-cap{grid-column:2;}
+.shot.flip > *:not(.shot-cap){grid-column:1;}
+.shot-cap{position:sticky;top:96px;}
+.shot-num{font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;color:var(--accent);margin:0 0 18px;}
+.shot-cap h3{font-family:var(--font-display);font-weight:600;font-size:clamp(21px,2vw,26px);line-height:1.1;letter-spacing:-.01em;margin:0 0 16px;}
+.shot-cap p{font-size:14.5px;line-height:1.62;color:var(--muted);margin:0;max-width:34ch;}
+.shot-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px;}
+.shot-tags span{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.04em;color:var(--ink-soft);border:1px solid var(--line);padding:6px 10px;background:var(--paper-2);}
+
+.frame{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 1px 1px rgba(20,46,60,.04),0 24px 56px -28px rgba(20,46,60,.30);}
+.frame-bar{display:flex;align-items:center;gap:7px;height:38px;padding:0 16px;border-bottom:1px solid var(--line-soft);background:var(--paper-2);}
+.frame-bar i{width:10px;height:10px;border-radius:50%;background:#d9d9d9;display:block;}
+.frame-bar .fb-url{margin-left:14px;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.04em;color:var(--muted-2);}
+.frame.scroll{max-height:680px;overflow:hidden;position:relative;}
+.frame.scroll .scroll-body{max-height:642px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--light) transparent;}
+.frame.scroll .scroll-body::-webkit-scrollbar{width:9px;}
+.frame.scroll .scroll-body::-webkit-scrollbar-thumb{background:var(--light);border-radius:6px;border:2px solid #fff;}
+.frame img{display:block;width:100%;height:auto;}
+
+/* —— CONTACT —— */
+.contact{padding:clamp(80px,9vw,120px) 0 0;border-top:1px solid var(--line-soft);margin-top:clamp(64px,8vw,110px);}
+.contact-grid{display:grid;grid-template-columns:1fr;gap:84px;align-items:start;}
+.contact h2{font-family:var(--font-display);font-weight:800;font-size:clamp(34px,4.6vw,58px);line-height:1.0;letter-spacing:-.025em;margin:20px 0 26px;max-width:11ch;}
+.contact-body{color:var(--muted);max-width:36ch;font-size:15px;line-height:1.65;margin:0;}
+.email{display:inline-flex;align-items:center;gap:10px;margin-top:26px;font-family:var(--font-mono);font-size:14px;border-bottom:1px solid var(--ink);padding-bottom:4px;}
+.email:hover{color:var(--accent);border-color:var(--accent);}
+.form-card{background:var(--paper-2);border:1px solid var(--line);padding:34px 32px;}
+.form-card .form-sub{font-size:12px;color:var(--muted);margin:8px 0 26px;}
+.field{margin-bottom:18px;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.field label{display:block;margin-bottom:9px;}
+.field input,.field select,.field textarea{width:100%;background:#fff;border:1px solid var(--line);border-radius:0;padding:13px 14px;font-family:var(--font-sans);font-size:14px;color:var(--ink);transition:border-color .15s ease;}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--ink);}
+.field input::placeholder,.field textarea::placeholder{color:#c4c4c4;}
+.field textarea{min-height:118px;resize:vertical;}
+.field select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%230d0d0d' stroke-width='2'><polyline points='6 9 12 15 18 9'/></svg>");background-repeat:no-repeat;background-position:right 14px center;}
+.send-btn{width:100%;background:var(--ink);color:#fff;border:none;cursor:pointer;padding:17px;font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:10px;transition:background .18s ease;}
+.send-btn:hover{background:var(--accent);}
+.footbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;border-top:1px solid var(--line-soft);margin-top:96px;padding:24px 0 40px;}
+.footbar a:hover{color:var(--accent);}
+
+/* —— RESPONSIVE —— */
+@media(max-width:1024px){
+  :root{--pad:40px;}
+  .case-grid{grid-template-columns:1fr;row-gap:54px;}
+  .contact-grid{grid-template-columns:1fr;gap:52px;}
+  .shot,.shot.flip{grid-template-columns:1fr;row-gap:24px;}
+  .shot > *,.shot.flip > *{grid-column:1 !important;}
+  .shot-cap{position:static;}
+  .shot-cap p{max-width:60ch;}
+}
+@media(max-width:760px){
+  :root{--pad:22px;}
+  .nav-links{position:fixed;inset:64px 0 auto 0;background:#fff;flex-direction:column;align-items:flex-start;gap:0;padding:8px 22px 24px;border-bottom:1px solid var(--line);transform:translateY(-130%);transition:transform .3s ease;}
+  .nav-links.open{transform:translateY(0);}
+  .nav-links a{padding:14px 0;font-size:13px;width:100%;border-bottom:1px solid var(--line-soft);}
+  .nav-toggle{display:flex;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;padding:8px;}
+  .nav-toggle span{width:22px;height:2px;background:var(--ink);}
+  .case-content{gap:48px;}
+  .field-row{grid-template-columns:1fr;}
+  .stats{gap:32px;}
+}
+
+/* —— PASSWORD GATE —— */
+.gate{position:fixed;inset:0;z-index:999;background:var(--paper);display:flex;align-items:center;justify-content:center;padding:24px;}
+.gate.hidden{display:none;}
+.gate-card{max-width:430px;width:100%;}
+.gate-lock{width:56px;height:56px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink);margin-bottom:30px;}
+.gate-card .lbl{display:block;margin-bottom:14px;}
+.gate-card h2{font-family:var(--font-display);font-weight:300;font-size:31px;line-height:1.14;letter-spacing:-.015em;margin:0 0 12px;}
+.gate-sub{color:var(--muted);font-size:14px;line-height:1.6;margin:0 0 28px;max-width:34ch;}
+#gatePw{width:100%;border:1px solid var(--line);border-radius:0;padding:14px;font-family:var(--font-sans);font-size:15px;color:var(--ink);margin-bottom:14px;}
+#gatePw:focus{outline:none;border-color:var(--ink);}
+#gatePw::placeholder{color:#c4c4c4;}
+.gate button{width:100%;background:var(--ink);color:#fff;border:none;cursor:pointer;padding:16px;font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;transition:background .18s ease;}
+.gate button:hover{background:var(--accent);}
+.gate-err{color:var(--accent);font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;margin:14px 0 0;display:none;}
+.gate-err.show{display:block;}
+.gate-back{display:inline-block;margin-top:28px;font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
+.gate-back:hover{color:var(--accent);}
+</style>
+<script src="../theme.js"></script>
+</head>
+<body>
+
+<!-- PASSWORD GATE -->
+<div class="gate" id="gate">
+  <div class="gate-card">
+    <div class="gate-lock"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="11" width="16" height="10" rx="1.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+    <span class="lbl">Protected Case Study</span>
+    <h2>This project is password-protected.</h2>
+    <p class="gate-sub">Enter the access password to view the BlueDrop Medical case study.</p>
+    <form id="gateForm" autocomplete="off">
+      <input type="password" id="gatePw" placeholder="Enter password" autocomplete="off">
+      <button type="submit">Unlock &rarr;</button>
+      <p class="gate-err" id="gateErr">Incorrect password &mdash; please try again.</p>
+    </form>
+    <a class="gate-back" href="../index.html#work">&larr; Return to Selected Works</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="../index.html"><b>Fergal Keane</b><span>UI/UX</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav class="nav-links" id="navLinks">
+      <a href="../index.html#work">Work</a>
+      <a href="../Resume.html">Resumé</a>
+      <a href="../index.html#contact">Contact</a>
+      </nav>
+  </div>
+</header>
+
+<main>
+<!-- BACK -->
+<div class="wrap backbar">
+  <a class="back-link" href="../index.html#work">&larr; Selected Works</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" data-screen-label="Hero">
+  <div class="wrap">
+    <div class="hero-banner">
+      <img class="hero-bg" src="../shots/BlueDrop_Hero.jpg" alt="A patient sitting on the floor, holding their bare foot">
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <div>
+          <div class="hero-crown">
+            <svg width="20" height="24" viewBox="0 0 24 28" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2C12 2 4 11 4 17a8 8 0 0 0 16 0c0-6-8-15-8-15z"/><circle cx="12" cy="17" r="3.4"/></svg>
+            <span class="est">MedTech &middot; Connected Health</span>
+          </div>
+          <h1 class="hero-title">BlueDrop<span> Medical</span></h1>
+          <p class="hero-tagline">A brand and web identity for an Irish medical-device start-up using connected technology to detect diabetic foot ulcers early &mdash; before they cost a limb.</p>
+        </div>
+        <div class="hero-meta">
+          <div><p class="lbl">Year</p><p class="mv">2020</p></div>
+          <div><p class="lbl">Client</p><p class="mv">BlueDrop Medical</p></div>
+          <div><p class="lbl">Your Role</p><p class="mv">Brand &amp; UI / UX Designer</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHALLENGE + SOLUTION + IMPACT -->
+<section class="case-body">
+  <div class="wrap">
+    <div class="case-grid">
+      <aside class="case-meta">
+        <div class="meta-item"><p class="lbl">The Role</p><p class="meta-val">Brand Identity &amp; UI / UX Designer</p></div>
+        <div class="meta-item"><p class="lbl">Client</p><p class="meta-val">BlueDrop Medical &mdash; Galway, Ireland</p></div>
+        <div class="meta-item">
+          <p class="lbl">Deliverables</p>
+          <ul class="check-list">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><polyline points="8.5 12.2 11 14.7 15.5 9.5"/></svg>Logo &amp; Symbol Design</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><polyline points="8.5 12.2 11 14.7 15.5 9.5"/></svg>Brand Identity System</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><polyline points="8.5 12.2 11 14.7 15.5 9.5"/></svg>Colour &amp; Type Palette</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><polyline points="8.5 12.2 11 14.7 15.5 9.5"/></svg>Marketing Website</li>
+          </ul>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="stats">
+          <div><p class="stat-num">75k</p><p class="lbl">US Amputations / Yr</p></div>
+          <div><p class="stat-num">$17B</p><p class="lbl">Annual DFU Cost</p></div>
+        </div>
+      </aside>
+      <div class="case-content">
+        <div class="case-block">
+          <span class="lbl">01 &mdash; The Challenge</span>
+          <h2 class="case-h">A breakthrough device that needed to be trusted at a glance.</h2>
+          <p class="case-p">Diabetic foot ulcers are devastating and expensive &mdash; in the USA alone they drive roughly 75,000 amputations a year, with a treatment cost estimated near $17&nbsp;billion. BlueDrop's home device scans a patient's feet daily and flags damage early, but as a young start-up they had no identity to carry that promise to clinicians, patients and investors.</p>
+          <p class="case-p">The brand had to feel clinically credible and genuinely human at once &mdash; serious enough for the medical world, warm enough for someone managing a lifelong condition at home.</p>
+        </div>
+        <div class="case-block">
+          <span class="lbl">02 &mdash; The Solution</span>
+          <h2 class="case-h">One symbol that holds the whole patient journey.</h2>
+          <p class="case-p">The identity is built on a single mark: a water drop &mdash; for &ldquo;BlueDrop&rdquo; and the clinical, diagnostic world &mdash; fused with a continuous loop standing for the lifelong patient journey, centred on an eye-like target for early detection. From that symbol flows a calm medical-blue palette, a clean confident wordmark, and a website that turns dense clinical evidence into something approachable.</p>
+        </div>
+        <div class="impact">
+          <span class="lbl">03 &mdash; Impact</span>
+          <h2>A complete identity system &mdash; from <em>symbol</em> to <em>website</em> &mdash; giving an early-detection start-up the credibility to win clinicians, patients and funding.</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE SYMBOL -->
+<section class="case-section">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="lbl">02.1 &mdash; The Symbol</span>
+      <h2 class="sec-title">A mark with meaning built in</h2>
+      <p class="sec-lead">The symbol is an equation: the company &mdash; an innovative start-up detecting diabetic foot ulcers &mdash; plus the patient journey, lifelong and often life-changing. BlueDrop sits at the heart of that journey, present at every step.</p>
+    </div>
+
+    <div class="symbol">
+      <div class="panel dark">
+        <div class="panel-pad dark"><span class="lbl">Concept</span><h3>Company + Patient Journey = BlueDrop</h3></div>
+        <div class="img-frame"><img src="../shots/BlueDrop_Concept.png" alt="Brand concept: the drop plus the patient-journey loop equals the BlueDrop mark"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-pad"><span class="lbl">Meaning</span><h3>Drop · Loop · Detection</h3></div>
+        <div class="panel-pad" style="padding-top:4px;">
+          <p class="case-p" style="font-size:15px;max-width:38ch;">The <strong style="color:var(--ink-soft)">drop</strong> grounds the name and the clinical world. The <strong style="color:var(--ink-soft)">loop</strong> represents the continuous, lifelong patient journey. At the centre, a <strong style="color:var(--ink-soft)">target / eye</strong> signals the product's core purpose &mdash; catching damage early, before it escalates.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="construct-pair">
+      <div class="panel">
+        <div class="panel-pad"><span class="lbl">Construction</span><h3>Gradient build</h3></div>
+        <div class="img-frame"><img src="../shots/BlueDrop_Construct_Gradient.png" alt="Geometric construction of the BlueDrop symbol, gradient version"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-pad"><span class="lbl">Geometry</span><h3>Grid &amp; proportion</h3></div>
+        <div class="img-frame"><img src="../shots/BlueDrop_Construct_Light.png" alt="Geometric construction grid of the BlueDrop symbol"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE IDENTITY -->
+<section class="case-section">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="lbl">02.2 &mdash; The Identity</span>
+      <h2 class="sec-title">A flexible, clinical-grade system</h2>
+      <p class="sec-lead">The wordmark splits weight across BLUE and DROP to make the name read instantly, balanced by a light tracked &ldquo;Medical&rdquo;. Horizontal and stacked lockups cover every placement from website header to device casing.</p>
+    </div>
+
+    <div class="lockups">
+      <div class="panel">
+        <div class="panel-pad"><span class="lbl">Primary Lockup</span><h3>Horizontal</h3></div>
+        <div class="img-frame"><img src="../shots/BlueDrop_Lockup_H.png" alt="BlueDrop Medical horizontal logo lockup"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-pad"><span class="lbl">Secondary Lockup</span><h3>Stacked</h3></div>
+        <div class="img-frame"><img src="../shots/BlueDrop_Lockup_V.png" alt="BlueDrop Medical stacked logo lockup"></div>
+      </div>
+    </div>
+
+    <div style="margin-top:clamp(48px,5vw,72px);">
+      <span class="lbl" style="display:block;margin-bottom:8px;">Colour Palette</span>
+      <h3 style="font-family:var(--font-display);font-weight:600;font-size:clamp(20px,2vw,24px);letter-spacing:-.01em;margin:0;">Medical blues, with a human accent</h3>
+      <div class="palette">
+        <div class="sw" style="background:#205269;"><p class="sw-name">BlueDrop Dark</p><p class="sw-hex">#205269</p></div>
+        <div class="sw" style="background:#49B7E9;"><p class="sw-name">BlueDrop Light</p><p class="sw-hex">#49B7E9</p></div>
+        <div class="sw" style="background:#405CF5;"><p class="sw-name">BlueDrop Royal</p><p class="sw-hex">#405CF5</p></div>
+        <div class="sw" style="background:#40F5CC;color:#10403a;"><p class="sw-name">Turquoise</p><p class="sw-hex">#40F5CC</p></div>
+        <div class="sw" style="background:#E85F71;"><p class="sw-name">Ketchup</p><p class="sw-hex">#E85F71</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE WEBSITE -->
+<section class="case-section">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="lbl">02.3 &mdash; The Website</span>
+      <h2 class="sec-title">Clinical evidence, made approachable</h2>
+      <p class="sec-lead">The marketing site had to speak to three very different audiences &mdash; patients, clinicians and investors &mdash; on one page. The design leads with a hopeful, human message, then layers in the science, the technology and the team behind it.</p>
+    </div>
+
+    <div class="webshots">
+      <article class="shot" data-screen-label="01 Homepage">
+        <div class="shot-cap">
+          <p class="shot-num">01 / Homepage</p>
+          <h3>A hopeful opening, grounded in evidence</h3>
+          <p>&ldquo;Taking giant leaps forward&hellip; one step at a time&rdquo; sets an optimistic tone, then the page steps down into the hard clinical case for early detection and a clear look at the device itself.</p>
+          <div class="shot-tags"><span>Brand Voice</span><span>Evidence</span><span>Product</span></div>
+        </div>
+        <div class="frame scroll">
+          <div class="frame-bar"><i></i><i></i><i></i><span class="fb-url">bluedropmedical.com</span></div>
+          <div class="scroll-body"><img src="../shots/BlueDrop_Web_1.png" alt="BlueDrop Medical homepage, full length" loading="lazy"></div>
+        </div>
+      </article>
+
+      <article class="shot flip" data-screen-label="02 How It Works">
+        <div class="shot-cap">
+          <p class="shot-num">02 / Story &amp; Team</p>
+          <h3>From &ldquo;how it works&rdquo; to who's behind it</h3>
+          <p>A circular &ldquo;Diagnose &middot; Scan &middot; Report &middot; Analyse&rdquo; diagram makes the technology legible at a glance, while news, team and consultant testimonials build the credibility a medical start-up lives or dies on.</p>
+          <div class="shot-tags"><span>Explainer</span><span>Credibility</span><span>Team</span></div>
+        </div>
+        <div class="frame scroll">
+          <div class="frame-bar"><i></i><i></i><i></i><span class="fb-url">bluedropmedical.com</span></div>
+          <div class="scroll-body"><img src="../shots/BlueDrop_Web_2.png" alt="BlueDrop Medical homepage variant with How It Works, team and news" loading="lazy"></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <p class="lbl">Get In Touch</p>
+        <h2>Let's craft something meaningful together.</h2>
+        <p class="contact-body">Currently open to selective senior contracts, UX consultations, and architecture leadership roles globally.</p>
+        <a class="email" href="mailto:studio@fergalkeane.com">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14"/><polyline points="3 6 12 13 21 6"/></svg>
+          studio@fergalkeane.com
+        </a>
+      </div>
+      
+    </div>
+    <div class="footbar">
+      <p class="lbl">&copy; 2026 Design by Fergal Keane</p>
+      <a class="lbl" href="../index.html#work">Back to Selected Works &nearr;</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<script>
+  /* Password gate — client-side preview only. In WordPress use native
+     page password protection or a membership plugin for real security. */
+  (function(){
+    var KEY='fk-unlock-bluedrop', PW='stepaside';
+    var gate=document.getElementById('gate');
+    if(sessionStorage.getItem(KEY)==='1'){gate.classList.add('hidden');}
+    else{
+      document.documentElement.style.overflow='hidden';
+      var f=document.getElementById('gateForm'),pw=document.getElementById('gatePw'),err=document.getElementById('gateErr');
+      f.addEventListener('submit',function(e){e.preventDefault();
+        if(pw.value.trim().toLowerCase()===PW){sessionStorage.setItem(KEY,'1');gate.classList.add('hidden');document.documentElement.style.overflow='';}
+        else{err.classList.add('show');pw.value='';pw.focus();}
+      });
+      pw.focus();
+    }
+  })();
+
+  const tgl=document.getElementById('navToggle'),lk=document.getElementById('navLinks');
+  if(tgl){tgl.addEventListener('click',()=>lk.classList.toggle('open'));
+    lk.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>lk.classList.remove('open')));}
+</script>
+</body>
+</html>
