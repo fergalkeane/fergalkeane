@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gateway — Case Study · Fergal Keane</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<style>
+@font-face{
+  font-family:'Space Grotesk';
+  src:url('fonts/SpaceGrotesk-VariableFont_wght.ttf') format('truetype');
+  font-weight:300 700;
+  font-style:normal;
+  font-display:swap;
+}
+:root{
+  --font-display:'Space Grotesk','Archivo',system-ui,sans-serif;
+  --font-sans:'Archivo',system-ui,sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,monospace;
+  --ink:#0d0d0d;--ink-soft:#1a1a1a;--muted:#8a8a8a;--muted-2:#b5b5b5;
+  --line:#e6e6e6;--line-soft:#efefef;--paper:#fff;--paper-2:#f6f6f4;--accent:#cf5a2c;
+  --maxw:1360px;--pad:56px;
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+a{color:inherit;text-decoration:none;}
+img{display:block;max-width:100%;}
+::selection{background:var(--accent);color:#fff;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad);}
+.lbl{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);}
+.accent{color:var(--accent);}
+
+/* —— NAV —— */
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line-soft);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;}
+.brand{display:flex;align-items:baseline;gap:12px;}
+.brand b{font-family:var(--font-display);font-weight:800;font-size:15px;letter-spacing:.04em;text-transform:uppercase;}
+.brand span{font-family:var(--font-mono);font-size:10px;letter-spacing:.2em;color:var(--muted);}
+.nav-links{display:flex;align-items:center;gap:34px;}
+.nav-links a{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);position:relative;padding:4px 0;}
+.nav-links a:hover{color:var(--ink);}
+.nav-search{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border:1px solid var(--line);border-radius:50%;color:var(--ink-soft);}
+.nav-toggle{display:none;}
+
+/* —— BACK —— */
+.backbar{padding:30px 0 0;}
+.back-link{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
+.back-link:hover{color:var(--accent);}
+
+/* —— HERO —— */
+.hero{padding:22px 0 0;}
+.hero-banner{position:relative;border-radius:16px;overflow:hidden;min-height:clamp(400px,46vw,560px);display:flex;background:#0c0c0c;}
+.hero-banner image-slot{position:absolute;inset:0;width:100%;height:100%;}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(110deg,rgba(8,8,10,.86) 0%,rgba(8,8,10,.55) 42%,rgba(8,8,10,.2) 100%);z-index:1;}
+.hero-content{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:space-between;gap:48px;padding:clamp(34px,4vw,60px);width:100%;color:#fff;}
+.hero-content .lbl{color:rgba(255,255,255,.6);}
+.hero-title{font-family:var(--font-display);font-weight:800;font-size:clamp(46px,7vw,92px);line-height:.95;letter-spacing:-.02em;margin:16px 0 12px;}
+.hero-tagline{font-size:clamp(15px,1.5vw,19px);color:rgba(255,255,255,.82);font-weight:400;letter-spacing:.01em;}
+.hero-meta{display:flex;flex-wrap:wrap;gap:clamp(38px,6vw,90px);}
+.hero-meta .lbl{color:rgba(255,255,255,.5);margin-bottom:8px;}
+.hero-meta .mv{font-size:15px;color:#fff;font-weight:500;}
+
+/* —— CASE BODY —— */
+.case-body{padding:84px 0 0;}
+.case-grid{display:grid;grid-template-columns:minmax(220px,290px) 1fr;column-gap:clamp(40px,6vw,104px);align-items:start;}
+.case-meta{display:flex;flex-direction:column;gap:34px;}
+.meta-item .meta-val{font-size:17px;color:var(--ink);font-weight:400;margin:9px 0 0;}
+.check-list{list-style:none;margin:11px 0 0;padding:0;display:flex;flex-direction:column;gap:13px;}
+.check-list li{display:flex;align-items:center;gap:11px;font-size:14px;font-weight:500;color:var(--ink-soft);}
+.check-list svg{flex:none;color:var(--muted-2);}
+.meta-divider{height:1px;background:var(--line);margin:4px 0;}
+.stats{display:flex;gap:48px;}
+.stat-num{font-family:var(--font-display);font-weight:800;font-size:34px;letter-spacing:-.02em;margin:0 0 6px;}
+
+.case-content{display:flex;flex-direction:column;gap:64px;}
+.case-block .lbl{display:block;margin-bottom:18px;}
+.case-h{font-family:var(--font-display);font-weight:300;font-size:clamp(27px,3.3vw,40px);line-height:1.15;letter-spacing:-.015em;color:var(--ink);margin:0 0 22px;max-width:18ch;}
+.case-p{font-size:16px;line-height:1.65;color:var(--muted);max-width:56ch;margin:0;}
+
+/* —— IMPACT —— */
+.impact{background:var(--ink);color:#fff;border-radius:4px;padding:clamp(40px,5vw,68px);}
+.impact .lbl{color:rgba(255,255,255,.45);display:block;margin-bottom:30px;}
+.impact h2{font-family:var(--font-display);font-weight:800;font-size:clamp(30px,3.9vw,50px);line-height:1.12;letter-spacing:-.02em;margin:0;max-width:15ch;}
+
+/* —— WORKFLOW —— */
+.case-section{padding:96px 0 0;}
+.sec-head .lbl{display:block;margin-bottom:20px;}
+.sec-title{font-family:var(--font-display);font-weight:300;font-size:clamp(27px,3.3vw,40px);line-height:1.12;letter-spacing:-.015em;margin:0 0 38px;max-width:16ch;}
+.flow-box{position:relative;border:1px solid var(--line);border-radius:6px;min-height:clamp(320px,34vw,440px);display:flex;align-items:center;justify-content:center;}
+.flow-circle{width:clamp(200px,22vw,280px);aspect-ratio:1;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.flow-circle .lbl{color:var(--muted-2);}
+.flow-box .flow-foot{position:absolute;left:0;right:0;bottom:30px;text-align:center;color:var(--muted-2);}
+
+/* —— DESIGN SYSTEM —— */
+.ds-grid{display:grid;grid-template-columns:1.05fr .82fr;gap:clamp(36px,5vw,72px);align-items:start;}
+.ds-lead{font-size:16px;line-height:1.65;color:var(--muted);max-width:34ch;margin:0 0 40px;}
+.swatches{display:flex;flex-direction:column;gap:22px;}
+.swatch{display:flex;align-items:center;gap:22px;}
+.swatch .chip{width:92px;height:64px;flex:none;border-radius:2px;border:1px solid rgba(0,0,0,.06);}
+.swatch .sname{font-size:14px;font-weight:600;color:var(--ink);margin:0 0 6px;}
+.type-card{border:1px solid var(--line);border-radius:6px;padding:clamp(26px,2.6vw,34px);background:var(--paper-2);}
+.type-card .lbl{display:block;margin-bottom:22px;}
+.type-card .tspec{font-family:var(--font-display);font-weight:400;font-size:clamp(40px,4.4vw,58px);line-height:.98;letter-spacing:-.02em;color:var(--ink);margin:0 0 22px;}
+.type-card .tdesc{font-size:14px;line-height:1.62;color:var(--muted);margin:0 0 26px;}
+.type-card .tdiv{height:1px;background:var(--line);margin:0 0 22px;}
+.type-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;}
+.type-foot .tspec2{font-family:var(--font-display);font-weight:600;font-size:30px;letter-spacing:-.01em;margin:0 0 6px;}
+.type-dots{display:flex;gap:8px;}
+.type-dots span{width:13px;height:13px;border-radius:50%;}
+
+/* —— FULL IMAGE —— */
+.full-img{padding:clamp(56px,6vw,90px) 0 0;}
+.full-img image-slot{display:block;width:100%;aspect-ratio:16/8;border-radius:6px;filter:grayscale(1) contrast(1.02);}
+
+/* —— CONTACT —— */
+.contact{padding:clamp(80px,9vw,120px) 0 0;border-top:1px solid var(--line-soft);margin-top:clamp(64px,8vw,110px);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:84px;align-items:start;}
+.contact h2{font-family:var(--font-display);font-weight:800;font-size:clamp(34px,4.6vw,58px);line-height:1.0;letter-spacing:-.025em;margin:20px 0 26px;max-width:11ch;}
+.contact-body{color:var(--muted);max-width:36ch;font-size:15px;line-height:1.65;margin:0;}
+.email{display:inline-flex;align-items:center;gap:10px;margin-top:26px;font-family:var(--font-mono);font-size:14px;border-bottom:1px solid var(--ink);padding-bottom:4px;}
+.email:hover{color:var(--accent);border-color:var(--accent);}
+.form-card{background:var(--paper-2);border:1px solid var(--line);padding:34px 32px;}
+.form-card .form-sub{font-size:12px;color:var(--muted);margin:8px 0 26px;}
+.field{margin-bottom:18px;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.field label{display:block;margin-bottom:9px;}
+.field input,.field select,.field textarea{width:100%;background:#fff;border:1px solid var(--line);border-radius:0;padding:13px 14px;font-family:var(--font-sans);font-size:14px;color:var(--ink);transition:border-color .15s ease;}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--ink);}
+.field input::placeholder,.field textarea::placeholder{color:#c4c4c4;}
+.field textarea{min-height:118px;resize:vertical;}
+.field select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%230d0d0d' stroke-width='2'><polyline points='6 9 12 15 18 9'/></svg>");background-repeat:no-repeat;background-position:right 14px center;}
+.send-btn{width:100%;background:var(--ink);color:#fff;border:none;cursor:pointer;padding:17px;font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:10px;transition:background .18s ease;}
+.send-btn:hover{background:var(--accent);}
+.footbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;border-top:1px solid var(--line-soft);margin-top:96px;padding:24px 0 40px;}
+.footbar a:hover{color:var(--accent);}
+
+/* —— RESPONSIVE —— */
+@media(max-width:1024px){
+  :root{--pad:40px;}
+  .case-grid{grid-template-columns:1fr;row-gap:54px;}
+  .ds-grid{grid-template-columns:1fr;}
+  .contact-grid{grid-template-columns:1fr;gap:52px;}
+}
+@media(max-width:760px){
+  :root{--pad:22px;}
+  .nav-links{position:fixed;inset:64px 0 auto 0;background:#fff;flex-direction:column;align-items:flex-start;gap:0;padding:8px 22px 24px;border-bottom:1px solid var(--line);transform:translateY(-130%);transition:transform .3s ease;}
+  .nav-links.open{transform:translateY(0);}
+  .nav-links a{padding:14px 0;font-size:13px;width:100%;border-bottom:1px solid var(--line-soft);}
+  .nav-search{display:none;}
+  .nav-toggle{display:flex;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;padding:8px;}
+  .nav-toggle span{width:22px;height:2px;background:var(--ink);}
+  .case-content{gap:48px;}
+  .field-row{grid-template-columns:1fr;}
+  .stats{gap:36px;}
+}
+
+/* —— PASSWORD GATE —— */
+.gate{position:fixed;inset:0;z-index:999;background:var(--paper);display:flex;align-items:center;justify-content:center;padding:24px;}
+.gate.hidden{display:none;}
+.gate-card{max-width:430px;width:100%;}
+.gate-lock{width:56px;height:56px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink);margin-bottom:30px;}
+.gate-card .lbl{display:block;margin-bottom:14px;}
+.gate-card h2{font-family:var(--font-display);font-weight:300;font-size:31px;line-height:1.14;letter-spacing:-.015em;margin:0 0 12px;}
+.gate-sub{color:var(--muted);font-size:14px;line-height:1.6;margin:0 0 28px;max-width:34ch;}
+#gatePw{width:100%;border:1px solid var(--line);border-radius:0;padding:14px;font-family:var(--font-sans);font-size:15px;color:var(--ink);margin-bottom:14px;}
+#gatePw:focus{outline:none;border-color:var(--ink);}
+#gatePw::placeholder{color:#c4c4c4;}
+.gate button{width:100%;background:var(--ink);color:#fff;border:none;cursor:pointer;padding:16px;font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;transition:background .18s ease;}
+.gate button:hover{background:var(--accent);}
+.gate-err{color:var(--accent);font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;margin:14px 0 0;display:none;}
+.gate-err.show{display:block;}
+.gate-back{display:inline-block;margin-top:28px;font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
+.gate-back:hover{color:var(--accent);}
+</style>
+</head>
+<body>
+
+<!-- PASSWORD GATE -->
+<div class="gate" id="gate">
+  <div class="gate-card">
+    <div class="gate-lock"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="11" width="16" height="10" rx="1.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+    <span class="lbl">Protected Case Study</span>
+    <h2>This project is password-protected.</h2>
+    <p class="gate-sub">Enter the access password to view the Gateway case study.</p>
+    <form id="gateForm" autocomplete="off">
+      <input type="password" id="gatePw" placeholder="Enter password" autocomplete="off">
+      <button type="submit">Unlock &rarr;</button>
+      <p class="gate-err" id="gateErr">Incorrect password &mdash; please try again.</p>
+    </form>
+    <a class="gate-back" href="Fergal Keane Portfolio.html#work">&larr; Return to Selected Works</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="Fergal Keane Portfolio.html"><b>Fergal Keane</b><span>UI/UX</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav class="nav-links" id="navLinks">
+      <a href="Fergal Keane Portfolio.html#work">Work</a>
+      <a href="Resume.html">Resumé</a>
+      <a href="Fergal Keane Portfolio.html#contact">Contact</a>
+      <a href="Fergal Keane Portfolio.html#contact" class="nav-search" aria-label="Search">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- BACK -->
+<div class="wrap backbar">
+  <a class="back-link" href="Fergal Keane Portfolio.html#work">&larr; Selected Works</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-banner">
+      <image-slot id="gw-hero" shape="rect" placeholder="Drop hero image (Earth from orbit)"></image-slot>
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <div>
+          <p class="lbl">Enterprise<br>SaaS</p>
+          <h1 class="hero-title">Gateway</h1>
+          <p class="hero-tagline">Centralizing Complex System Operations</p>
+        </div>
+        <div class="hero-meta">
+          <div><p class="lbl">Year</p><p class="mv">2024</p></div>
+          <div><p class="lbl">Client</p><p class="mv">European Space Agency (ESA)</p></div>
+          <div><p class="lbl">Your Role</p><p class="mv">Lead UX/UI Designer</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHALLENGE + SOLUTION + IMPACT -->
+<section class="case-body">
+  <div class="wrap">
+    <div class="case-grid">
+      <aside class="case-meta">
+        <div class="meta-item"><p class="lbl">The Role</p><p class="meta-val">Lead UX/UI Designer</p></div>
+        <div class="meta-item"><p class="lbl">Client</p><p class="meta-val">European Space Agency (ESA)</p></div>
+        <div class="meta-item">
+          <p class="lbl">Focus Areas</p>
+          <ul class="check-list">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><polyline points="8.5 12.2 11 14.7 15.5 9.5"/></svg>User Persona Mapping</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><polyline points="8.5 12.2 11 14.7 15.5 9.5"/></svg>Cross-Tool Integration</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><polyline points="8.5 12.2 11 14.7 15.5 9.5"/></svg>Design Systems</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><polyline points="8.5 12.2 11 14.7 15.5 9.5"/></svg>Data Visualization</li>
+          </ul>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="stats">
+          <div><p class="stat-num">35%</p><p class="lbl">Efficiency Gain</p></div>
+          <div><p class="stat-num">10m</p><p class="lbl">Time Saved</p></div>
+        </div>
+      </aside>
+      <div class="case-content">
+        <div class="case-block">
+          <span class="lbl">01 &mdash; The Challenge</span>
+          <h2 class="case-h">Addressing complex usability hurdles in a high-stakes environment.</h2>
+          <p class="case-p">Users were switching between 12+ different software tools to complete a single maintenance cycle, leading to high error rates and significant cognitive fatigue in space mission support control centers.</p>
+        </div>
+        <div class="case-block">
+          <span class="lbl">02 &mdash; The Solution</span>
+          <h2 class="case-h">Strategic design intervention focused on user outcomes.</h2>
+          <p class="case-p">Developed a unified &ldquo;Workspace&rdquo; concept within Gateway that dynamically serves only the relevant datasets and actions based on the user's specific progress in the maintenance lifecycle.</p>
+        </div>
+        <div class="impact">
+          <span class="lbl">03 &mdash; Impact</span>
+          <h2>Reduced operational friction by 35% and cut down the average time-to-completion for mission-critical tasks by 10 minutes per cycle.</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKFLOW ARCHITECTURE -->
+<section class="case-section">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="lbl">02.1 &mdash; Workflow Architecture</span>
+      <h2 class="sec-title">Complex System Logic</h2>
+    </div>
+    <div class="flow-box">
+      <div class="flow-circle"><span class="lbl">Logical Flow Mapping</span></div>
+      <span class="lbl flow-foot">Interaction Flow Visualization</span>
+    </div>
+  </div>
+</section>
+
+<!-- DESIGN SYSTEM -->
+<section class="case-section">
+  <div class="wrap">
+    <div class="ds-grid">
+      <div>
+        <span class="lbl" style="display:block;margin-bottom:20px;">02.2 &mdash; Design System</span>
+        <h2 class="sec-title">Visual Identity for the Final Frontier</h2>
+        <p class="ds-lead">ESA employs a carefully curated colour palette that reflects its mission, values, and the grandeur of space exploration.</p>
+        <div class="swatches">
+          <div class="swatch">
+            <span class="chip" style="background:#003263;"></span>
+            <div><p class="sname">ESA Deep Space Blue</p><p class="lbl">#003263 &mdash; Primary Branding</p></div>
+          </div>
+          <div class="swatch">
+            <span class="chip" style="background:#009FE3;"></span>
+            <div><p class="sname">ESA Trunk Azure</p><p class="lbl">#009FE3 &mdash; Active States</p></div>
+          </div>
+          <div class="swatch">
+            <span class="chip" style="background:#FFD200;"></span>
+            <div><p class="sname">ESA Enlight Yellow</p><p class="lbl">#FFD200 &mdash; Critical Indications</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="type-card">
+        <span class="lbl">Typeface</span>
+        <p class="tspec">Notes<br>ESA</p>
+        <p class="tdesc">A customized font for the space aeronautics agency, prioritizing high readability in low-light, high-stress operational environments.</p>
+        <div class="tdiv"></div>
+        <div class="type-foot">
+          <div><p class="tspec2">Inter</p><span class="lbl">System UI Typography</span></div>
+          <div class="type-dots"><span style="background:#003263;"></span><span style="background:#009FE3;"></span><span style="background:#FFD200;"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FULL IMAGE -->
+<section class="full-img">
+  <div class="wrap">
+    <image-slot id="gw-screen" shape="rect" placeholder="Drop workspace screenshot"></image-slot>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <p class="lbl">Get In Touch</p>
+        <h2>Let's craft something meaningful together.</h2>
+        <p class="contact-body">Currently open to selective senior contracts, UX consultations, and architecture leadership roles globally.</p>
+        <a class="email" href="mailto:fergkeane@gmail.com">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14"/><polyline points="3 6 12 13 21 6"/></svg>
+          fergkeane@gmail.com
+        </a>
+      </div>
+      <div class="form-card">
+        <p class="lbl">Contact Form</p>
+        <p class="form-sub">Submit your project details directly below.</p>
+        <form onsubmit="return false">
+          <div class="field-row">
+            <div class="field"><label class="lbl">Your Name</label><input type="text" placeholder="Jane Doe"></div>
+            <div class="field"><label class="lbl">Email Address</label><input type="email" placeholder="jane@example.com"></div>
+          </div>
+          <div class="field">
+            <label class="lbl">Primary Area Of Inquiry</label>
+            <select><option>SaaS &amp; Enterprise UX Architecture</option><option>Design System &amp; Figma Engineering</option><option>Aviation / Marine Spatial HUDs</option><option>Prototyping &amp; UX Consultation</option></select>
+          </div>
+          <div class="field"><label class="lbl">Overview Of Your Objective</label><textarea placeholder="Briefly describe the timeline, budget scope, or desired design outcome..."></textarea></div>
+          <button type="submit" class="send-btn">Send Inquiry &rarr;</button>
+        </form>
+      </div>
+    </div>
+    <div class="footbar">
+      <p class="lbl">&copy; 2026 Design by Fergal Keane</p>
+      <a class="lbl" href="#">Download Source (.zip) &nearr;</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<script>
+  /* Password gate — client-side preview only. In WordPress use native
+     page password protection or a membership plugin for real security. */
+  (function(){
+    var KEY='fk-unlock-gateway', PW='stepaside';
+    var gate=document.getElementById('gate');
+    if(sessionStorage.getItem(KEY)==='1'){gate.classList.add('hidden');}
+    else{
+      document.documentElement.style.overflow='hidden';
+      var f=document.getElementById('gateForm'),pw=document.getElementById('gatePw'),err=document.getElementById('gateErr');
+      f.addEventListener('submit',function(e){e.preventDefault();
+        if(pw.value.trim().toLowerCase()===PW){sessionStorage.setItem(KEY,'1');gate.classList.add('hidden');document.documentElement.style.overflow='';}
+        else{err.classList.add('show');pw.value='';pw.focus();}
+      });
+      pw.focus();
+    }
+  })();
+
+  const tgl=document.getElementById('navToggle'),lk=document.getElementById('navLinks');
+  if(tgl){tgl.addEventListener('click',()=>lk.classList.toggle('open'));
+    lk.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>lk.classList.remove('open')));}
+</script>
+</body>
+</html>

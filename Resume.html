@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Résumé — Fergal Keane</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+@font-face{
+  font-family:'Space Grotesk';
+  src:url('fonts/SpaceGrotesk-VariableFont_wght.ttf') format('truetype');
+  font-weight:300 700;
+  font-style:normal;
+  font-display:swap;
+}
+:root{
+  --font-display:'Space Grotesk','Archivo',system-ui,sans-serif;
+  --font-sans:'Archivo',system-ui,sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,monospace;
+  --ink:#0d0d0d;--ink-soft:#1a1a1a;--muted:#8a8a8a;--muted-2:#b5b5b5;
+  --line:#e6e6e6;--line-soft:#efefef;--paper:#fff;--paper-2:#f6f6f4;--accent:#cf5a2c;
+  --maxw:1360px;--pad:56px;
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+a{color:inherit;text-decoration:none;}
+img{display:block;max-width:100%;}
+::selection{background:var(--accent);color:#fff;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad);}
+.lbl{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);}
+.accent{color:var(--accent);}
+
+/* —— NAV —— */
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line-soft);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;}
+.brand{display:flex;align-items:baseline;gap:12px;}
+.brand b{font-family:var(--font-display);font-weight:800;font-size:15px;letter-spacing:.04em;text-transform:uppercase;}
+.brand span{font-family:var(--font-mono);font-size:10px;letter-spacing:.2em;color:var(--muted);}
+.nav-links{display:flex;align-items:center;gap:34px;}
+.nav-links a{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);position:relative;padding:4px 0;}
+.nav-links a.active{color:var(--ink);}
+.nav-links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1.5px;background:var(--ink);}
+.nav-links a:not(.active):hover{color:var(--ink);}
+.nav-toggle{display:none;}
+
+/* —— HEADER —— */
+.rhead{padding:74px 0 0;}
+.rhead-top{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap;}
+.rhead h1{font-family:var(--font-display);font-weight:800;font-size:clamp(46px,8vw,104px);line-height:.92;letter-spacing:-.025em;margin:16px 0 0;}
+.rhead-role{font-size:clamp(15px,1.5vw,18px);color:var(--muted);margin:22px 0 0;max-width:40ch;}
+.rhead-role b{color:var(--ink);font-weight:500;}
+.dl-resume{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:15px 26px;border:1px solid var(--ink);transition:all .18s ease;white-space:nowrap;margin-top:6px;}
+.dl-resume:hover{background:var(--ink);color:#fff;}
+.rhead-rule{border:none;border-top:1px solid var(--ink);margin:48px 0 0;}
+
+/* —— BODY GRID —— */
+.rbody{padding:64px 0 0;}
+.rgrid{display:grid;grid-template-columns:1fr minmax(280px,344px);gap:clamp(48px,6vw,104px);align-items:start;}
+
+/* Experience timeline */
+.sec-label{display:flex;align-items:baseline;justify-content:space-between;border-top:1px solid var(--ink);padding-top:14px;margin-bottom:42px;}
+.xp{display:flex;flex-direction:column;gap:54px;}
+.job{display:grid;grid-template-columns:128px 1fr;gap:30px;}
+.job-when .lbl{color:var(--ink-soft);line-height:1.5;}
+.job-when .badge{display:inline-block;margin-top:10px;font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:3px 8px;}
+.job h3{font-family:var(--font-display);font-weight:700;font-size:clamp(22px,2.2vw,27px);letter-spacing:-.01em;line-height:1.05;margin:0;}
+.job-role{font-size:13.5px;color:var(--muted);margin:7px 0 16px;font-weight:500;}
+.job ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
+.job li{position:relative;padding-left:20px;font-size:14.5px;line-height:1.6;color:var(--ink-soft);}
+.job li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;background:var(--accent);}
+.job .sub{margin:6px 0 4px 4px;padding-left:16px;border-left:1px solid var(--line);display:flex;flex-direction:column;gap:7px;}
+.job .sub li{padding-left:18px;font-size:13.5px;color:var(--muted);}
+.job .sub li::before{width:4px;height:4px;background:var(--muted-2);top:9px;}
+.job-note{margin:14px 0 0;font-size:14px;line-height:1.6;color:var(--muted);}
+.tag-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+.tag{font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;color:var(--ink-soft);border:1px solid var(--line);padding:7px 12px;background:var(--paper-2);}
+
+/* Sidebar */
+.aside{position:sticky;top:88px;display:flex;flex-direction:column;gap:40px;}
+.card{border:1px solid var(--line);padding:28px 26px;}
+.card.dark{background:var(--ink);color:#fff;border-color:var(--ink);}
+.card .lbl{display:block;margin-bottom:20px;}
+.card.dark .lbl{color:rgba(255,255,255,.45);}
+.skill-list{display:flex;flex-wrap:wrap;gap:8px;}
+.skill-list span{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.03em;border:1px solid var(--line);padding:8px 12px;color:var(--ink-soft);}
+.plist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:13px;}
+.plist li{display:flex;align-items:center;gap:11px;font-size:14px;font-weight:500;color:var(--ink-soft);}
+.plist svg{flex:none;color:var(--muted-2);}
+.edu .deg{font-family:var(--font-display);font-weight:600;font-size:18px;line-height:1.2;margin:0 0 8px;}
+.edu .meta{font-size:13.5px;color:var(--muted);margin:0;}
+.awards{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:18px;}
+.awards li{font-size:14px;line-height:1.5;color:rgba(255,255,255,.82);position:relative;padding-left:24px;}
+.awards li::before{content:"";position:absolute;left:0;top:6px;width:9px;height:9px;border:1.5px solid var(--accent);transform:rotate(45deg);}
+.awards b{display:block;font-family:var(--font-display);font-weight:700;color:#fff;font-size:14.5px;letter-spacing:-.005em;margin-bottom:3px;}
+.refs{font-size:14px;line-height:1.6;color:var(--muted);margin:0;}
+
+/* —— CONTACT (shared) —— */
+.contact{padding:clamp(80px,9vw,120px) 0 0;border-top:1px solid var(--line-soft);margin-top:clamp(72px,9vw,120px);}
+.contact-grid{display:grid;grid-template-columns:1fr;gap:84px;align-items:start;}
+.contact h2{font-family:var(--font-display);font-weight:800;font-size:clamp(34px,4.6vw,58px);line-height:1.0;letter-spacing:-.025em;margin:20px 0 26px;max-width:11ch;}
+.contact-body{color:var(--muted);max-width:36ch;font-size:15px;line-height:1.65;margin:0;}
+.email{display:inline-flex;align-items:center;gap:10px;margin-top:26px;font-family:var(--font-mono);font-size:14px;border-bottom:1px solid var(--ink);padding-bottom:4px;}
+.email:hover{color:var(--accent);border-color:var(--accent);}
+.form-card{background:var(--paper-2);border:1px solid var(--line);padding:34px 32px;}
+.form-card .form-sub{font-size:12px;color:var(--muted);margin:8px 0 26px;}
+.field{margin-bottom:18px;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.field label{display:block;margin-bottom:9px;}
+.field input,.field select,.field textarea{width:100%;background:#fff;border:1px solid var(--line);border-radius:0;padding:13px 14px;font-family:var(--font-sans);font-size:14px;color:var(--ink);transition:border-color .15s ease;}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--ink);}
+.field input::placeholder,.field textarea::placeholder{color:#c4c4c4;}
+.field textarea{min-height:118px;resize:vertical;}
+.field select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%230d0d0d' stroke-width='2'><polyline points='6 9 12 15 18 9'/></svg>");background-repeat:no-repeat;background-position:right 14px center;}
+.send-btn{width:100%;background:var(--ink);color:#fff;border:none;cursor:pointer;padding:17px;font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:10px;transition:background .18s ease;}
+.send-btn:hover{background:var(--accent);}
+.footbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;border-top:1px solid var(--line-soft);margin-top:96px;padding:24px 0 40px;}
+.footbar a:hover{color:var(--accent);}
+
+/* —— RESPONSIVE —— */
+@media(max-width:1024px){
+  :root{--pad:40px;}
+  .rgrid{grid-template-columns:1fr;gap:56px;}
+  .aside{position:static;}
+  .contact-grid{grid-template-columns:1fr;gap:52px;}
+}
+@media(max-width:760px){
+  :root{--pad:22px;}
+  .nav-links{position:fixed;inset:64px 0 auto 0;background:#fff;flex-direction:column;align-items:flex-start;gap:0;padding:8px 22px 24px;border-bottom:1px solid var(--line);transform:translateY(-130%);transition:transform .3s ease;}
+  .nav-links.open{transform:translateY(0);}
+  .nav-links a{padding:14px 0;font-size:13px;width:100%;border-bottom:1px solid var(--line-soft);}
+  .nav-links a.active::after{display:none;}
+  .nav-toggle{display:flex;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;padding:8px;}
+  .nav-toggle span{width:22px;height:2px;background:var(--ink);}
+  .rhead{padding:46px 0 0;}
+  .job{grid-template-columns:1fr;gap:14px;}
+  .job-when{display:flex;align-items:center;gap:14px;}
+  .job-when .badge{margin-top:0;}
+  .field-row{grid-template-columns:1fr;}
+}
+
+/* —— PRINT / PDF —— */
+@media print{
+  @page{size:A4;margin:14mm 14mm;}
+  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;}
+  html,body{background:#fff;}
+  .nav,.nav-toggle,.contact,.footbar,.dl-resume,.print-hide{display:none !important;}
+  .print-only{display:block !important;}
+  main{padding:0 !important;}
+  .wrap{max-width:none;padding:0;}
+  .rhead{padding:0 !important;}
+  .rhead h1{font-size:44px;margin-top:6px;}
+  .rhead-role{font-size:11.5px;margin-top:10px;max-width:60ch;}
+  .rhead-rule{margin-top:18px;}
+  .rbody{padding:18px 0 0 !important;}
+  .rgrid{grid-template-columns:1fr 200px;gap:30px;}
+  .aside{position:static !important;top:auto;gap:18px;}
+  .sec-label{margin-bottom:20px;padding-top:10px;}
+  .xp{gap:22px;}
+  .job{grid-template-columns:96px 1fr;gap:18px;break-inside:avoid;align-items:baseline;}
+  .job-when{display:block;padding-top:0;}
+  .job-when .lbl{display:block;line-height:1.25;}
+  .job-when .badge{display:block;width:-moz-fit-content;width:fit-content;margin-top:8px;}
+  .job h3{font-size:17px;}
+  .job-role{font-size:11px;margin:4px 0 9px;}
+  .job li{font-size:10.5px;line-height:1.45;padding-left:15px;}
+  .job li::before{top:6px;width:4px;height:4px;}
+  .job .sub li{font-size:10px;}
+  .job-note{font-size:10.5px;margin-top:8px;}
+  .tag,.skill-list span{font-size:9px;padding:4px 7px;}
+  .tag-grid{gap:5px;margin-top:9px;}
+  .card{padding:16px 16px;break-inside:avoid;}
+  .card .lbl{margin-bottom:12px;}
+  .skill-list{gap:5px;}
+  .edu .deg{font-size:14px;}
+  .edu .meta{font-size:10.5px;}
+  .awards{gap:11px;}
+  .awards li{font-size:10.5px;padding-left:18px;}
+  .awards b{font-size:11px;}
+  .awards li::before{width:7px;height:7px;top:4px;}
+  .plist li{font-size:10.5px;}
+  .refs{font-size:10.5px;}
+  .lbl{font-size:9px;}
+  a[href]::after{content:none !important;}
+}
+.print-only{display:none;}
+</style>
+<script src="theme.js"></script>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html"><b>Fergal Keane</b><span>UI/UX</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html#work">Work</a>
+      <a href="Resume.html" class="active">Resumé</a>
+      <a href="index.html#contact">Contact</a>
+      </nav>
+  </div>
+</header>
+
+<main>
+<!-- HEADER -->
+<section class="rhead">
+  <div class="wrap">
+    <p class="lbl">Curriculum Vitae</p>
+    <div class="rhead-top">
+      <div>
+        <h1>Résumé</h1>
+        <p class="rhead-role"><b>Senior UX/UI &amp; Product Designer</b> with two decades shaping enterprise software, design systems, and brand across aviation, space, insurance and e-learning.</p>
+        <p class="print-only" style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:.04em;color:var(--ink-soft);margin:10px 0 0;">studio@fergalkeane.com &nbsp;·&nbsp; Based in Ireland, working globally</p>
+      </div>
+      <a class="dl-resume" href="#" onclick="window.print();return false;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12"/><polyline points="7 11 12 16 17 11"/><path d="M5 21h14"/></svg>
+        Download PDF
+      </a>
+    </div>
+    <hr class="rhead-rule">
+  </div>
+</section>
+
+<!-- BODY -->
+<section class="rbody">
+  <div class="wrap">
+    <div class="rgrid">
+      <!-- EXPERIENCE -->
+      <div>
+        <div class="sec-label"><span class="lbl">Experience</span><span class="lbl">2001 — Present</span></div>
+        <div class="xp">
+
+          <article class="job">
+            <div class="job-when"><span class="lbl">2021 —<br>Present</span><span class="badge">Current</span></div>
+            <div>
+              <h3>Skytek</h3>
+              <p class="job-role">Senior UX/UI Designer</p>
+              <ul>
+                <li>Lead design efforts for new software projects in the Space and Insurance sector.</li>
+                <li>Build and maintain design systems.</li>
+                <li>Collaborate with the European Space Agency, NASA and independent space technology companies on cutting-edge initiatives.</li>
+                <li>Constantly in touch with clients, refining products based on user experience.</li>
+                <li>Instrumental in the launch of Skytek &lsquo;Satellite Club&rsquo; — an online platform that puts Earth Observation &amp; Satellite Technology in the hands of the insurer.</li>
+                <li>Lead creative design on reports for major insurance companies.</li>
+                <li>Design, maintain, and develop company websites.</li>
+                <li>Deliver social media and marketing campaigns.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="job">
+            <div class="job-when"><span class="lbl">2019 —<br>2021</span></div>
+            <div>
+              <h3>Freelance Design Consultant</h3>
+              <p class="job-role">Design Consultant</p>
+              <ul>
+                <li>Worked with a number of companies on UI / UX, brand and marketing-related design projects.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="job">
+            <div class="job-when"><span class="lbl">2016 —<br>2019</span></div>
+            <div>
+              <h3>Oyster Capital Partners</h3>
+              <p class="job-role">Graphic Designer</p>
+              <ul>
+                <li>Assisted companies under the Oyster Capital umbrella with product development, branding and marketing activities.</li>
+                <li>Worked with start-ups and well-established companies, including:
+                  <ul class="sub">
+                    <li>Cloudwords — SaaS, Automated Translation Platform</li>
+                    <li>Fieldaware — SaaS, Field Service Management</li>
+                    <li>Novaerus — Air Purification Devices</li>
+                    <li>Wicklow Wolf — Brewery</li>
+                  </ul>
+                </li>
+                <li>Worked with stakeholders, developers, managers and team members to create new or improved products from low-fidelity wireframes to the final product.</li>
+                <li>Ensured the final product met the required visual standards.</li>
+                <li>Re-branding and creating brand style guides where previously non-existent.</li>
+                <li>Developed landing pages and email campaigns through various marketing platforms.</li>
+                <li>Assisted the marketing departments on specific trade shows and marketing events.</li>
+                <li>Worked with executive management and sales personnel on key presentations to close deals and fundraising / investment opportunities.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="job">
+            <div class="job-when"><span class="lbl">Lead<br>Creative</span></div>
+            <div>
+              <h3>Skillsoft</h3>
+              <p class="job-role">Lead Creative Designer (R&amp;D)</p>
+              <ul>
+                <li>As lead UI designer, worked with development teams overseeing all aspects of design from initial wireframe concepts through to the final product.</li>
+                <li>Responsible for maintaining high visual standards both internally and with external partners.</li>
+                <li>Collaborated with corporate marketing on print collateral and presentations for user conferences and trade shows across the U.S. and EMEA.</li>
+                <li>Regularly called upon by executive management and salespeople to give design assistance on important client presentations, especially where large contracts were involved.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="job">
+            <div class="job-when"><span class="lbl">Senior<br>Graphic</span></div>
+            <div>
+              <h3>SmartForce</h3>
+              <p class="job-role">Senior Graphic Designer</p>
+              <ul>
+                <li>Worked with a creative team of designers and developers responsible for the launch of the company&rsquo;s first online e-Learning Portal (LMS) — including UI design, brand development, sales and marketing materials, and liaising with developers and external design and advertising agencies.</li>
+                <li>Maintained a pivotal role in developing the brand across all media.</li>
+                <li>Managed design and multimedia teams in Ireland and San Francisco.</li>
+                <li>Responsible for creating new visual standards and training new employees.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="job">
+            <div class="job-when"><span class="lbl">Graphic<br>Designer</span></div>
+            <div>
+              <h3>CBT Systems</h3>
+              <p class="job-role">Graphic Designer → Art Director</p>
+              <ul>
+                <li>Worked on significant design projects developing graphic libraries for Microsoft, Cisco, Oracle &amp; SAP products.</li>
+                <li>Provided on-site training and mentoring for a team of 30 designers in the South Africa office.</li>
+                <li>Promoted to Art Director with responsibility for developing new visual design standards and streamlining the design process.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="job">
+            <div class="job-when"><span class="lbl">Graphic<br>Designer</span></div>
+            <div>
+              <h3>Freelance Design</h3>
+              <p class="job-role">Graphic Designer</p>
+              <p class="job-note">Worked on many creative design projects for international companies, start-ups and design agencies. Notable companies and agencies include:</p>
+              <div class="tag-grid">
+                <span class="tag">Enovation Solutions</span>
+                <span class="tag">InterTrade Ireland</span>
+                <span class="tag">Bluedrop Medical</span>
+                <span class="tag">Novaerus</span>
+                <span class="tag">Cloudwords</span>
+                <span class="tag">Outdoorsie</span>
+                <span class="tag">Alison.com</span>
+                <span class="tag">Wicklow Wolf Brewing</span>
+                <span class="tag">Datalex</span>
+                <span class="tag">Atlantic Bridge</span>
+                <span class="tag">Birth Digital</span>
+                <span class="tag">Aró Digital Strategy</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside class="aside">
+        <div class="card edu">
+          <span class="lbl">Education</span>
+          <p class="deg">Visual Communications</p>
+          <p class="meta">Waterford Institute of Technology<br>Awarded with Merit</p>
+        </div>
+
+        <div class="card">
+          <span class="lbl">Skills</span>
+          <div class="skill-list">
+            <span>Figma</span><span>Adobe Creative Suite</span><span>WordPress</span><span>HubSpot</span><span>HTML / CSS</span><span>508 Compliance</span><span>Brand Implementation</span><span>Brand Management</span><span>Typography</span><span>Microsoft Office Suite</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <span class="lbl">Personal Skills</span>
+          <ul class="plist">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><polyline points="8.5 12.2 11 14.7 15.5 9.5"/></svg>Problem-Solving</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><polyline points="8.5 12.2 11 14.7 15.5 9.5"/></svg>Creative Thinking</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><polyline points="8.5 12.2 11 14.7 15.5 9.5"/></svg>Attention to Detail</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><polyline points="8.5 12.2 11 14.7 15.5 9.5"/></svg>Collaboration</li>
+          </ul>
+        </div>
+
+        <div class="card dark">
+          <span class="lbl">Awards</span>
+          <ul class="awards">
+            <li><b>Presidents Club</b>Skillsoft — Outstanding Achievement Award</li>
+            <li><b>Employee of the Year</b>SmartForce</li>
+            <li><b>EULDA</b>European Logo Design Annual (CreativeOoze)</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <span class="lbl">References</span>
+          <p class="refs">Reference names and contact details are available upon request.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <p class="lbl">Get In Touch</p>
+        <h2>Let's craft something meaningful together.</h2>
+        <a class="email" href="mailto:studio@fergalkeane.com">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14"/><polyline points="3 6 12 13 21 6"/></svg>
+          studio@fergalkeane.com
+        </a>
+      </div>
+      
+    </div>
+    <div class="footbar">
+      <p class="lbl">© 2026 Design by Fergal Keane</p>
+      <a class="lbl" href="#" onclick="window.print();return false;">Download Resume (PDF) ↗</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<script>
+  const tgl=document.getElementById('navToggle'),lk=document.getElementById('navLinks');
+  if(tgl){tgl.addEventListener('click',()=>lk.classList.toggle('open'));
+    lk.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>lk.classList.remove('open')));}
+</script>
+</body>
+</html>
