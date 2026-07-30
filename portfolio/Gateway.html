@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="googlebot" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gateway — Case Study · Fergal Keane</title>
+<title>Gateway Case Study · Fergal Keane</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -282,7 +282,7 @@ img{display:block;max-width:100%;}
     <form id="gateForm" autocomplete="off">
       <input type="password" id="gatePw" placeholder="Enter password" autocomplete="off">
       <button type="submit">Unlock &rarr;</button>
-      <p class="gate-err" id="gateErr">Incorrect password &mdash; please try again.</p>
+      <p class="gate-err" id="gateErr">Incorrect password. Please try again.</p>
     </form>
     <a class="gate-back" href="../home.html#work">&larr; Return to Selected Works</a>
   </div>
@@ -311,7 +311,7 @@ img{display:block;max-width:100%;}
 <section class="hero">
   <div class="wrap">
     <div class="hero-banner">
-      <image-slot id="gw-hero" shape="rect" placeholder="Drop hero image (Earth from orbit)"></image-slot>
+      <image-slot id="gw-hero" shape="rect" src="../images/gateway/Gateway_Moon.jpg" placeholder="Drop hero image (Earth from orbit)"></image-slot>
       <div class="hero-shade"></div>
       <div class="hero-content">
         <div>
@@ -334,7 +334,7 @@ img{display:block;max-width:100%;}
   <div class="wrap">
     <div class="case-grid">
       <aside class="case-meta">
-        <div class="meta-item"><p class="lbl">The Role</p><p class="meta-val">Lead UX/UI Designer &mdash; end-to-end</p></div>
+        <div class="meta-item"><p class="lbl">The Role</p><p class="meta-val">Lead UX/UI Designer · end-to-end</p></div>
         <div class="meta-item"><p class="lbl">Client</p><p class="meta-val">European Space Agency (ESA)</p></div>
         <div class="meta-item"><p class="lbl">Platform</p><p class="meta-val">Desktop web &middot; control-room displays</p></div>
         <div class="meta-item">
@@ -354,13 +354,13 @@ img{display:block;max-width:100%;}
       </aside>
       <div class="case-content">
         <div class="case-block">
-          <span class="lbl">01 &mdash; Overview</span>
+          <span class="lbl">01 · Overview</span>
           <h2 class="case-h">One workspace for a workflow that was scattered across a dozen systems.</h2>
-          <p class="case-p" style="margin-bottom:36px;">Gateway is an operations console that consolidates the fragmented toolchain ESA mission-support teams use to run a maintenance cycle into a single, state-aware workspace &mdash; orchestrating existing systems rather than replacing them.</p>
+          <p class="case-p" style="margin-bottom:36px;">Gateway is an operations console that consolidates the fragmented toolchain ESA mission-support teams use to run a maintenance cycle into a single, state-aware workspace, orchestrating existing systems rather than replacing them.</p>
           <div class="qa">
             <div class="qa-item"><span class="lbl">What it is</span><p>A web console that sits above ESA's existing operational tools and presents one continuous workspace for running a maintenance cycle end to end.</p></div>
             <div class="qa-item"><span class="lbl">Who it's for</span><p><strong>Primary:</strong> mission-support operators and maintenance engineers working live cycles. <strong>Secondary:</strong> shift leads who audit work and run handovers between shifts.</p></div>
-            <div class="qa-item"><span class="lbl">Core problem</span><p>A single maintenance cycle spanned <strong>12+ disconnected tools</strong>. The constant context-switching &mdash; not any one tool &mdash; was driving errors and cognitive fatigue in an environment with no tolerance for either.</p></div>
+            <div class="qa-item"><span class="lbl">Core problem</span><p>A single maintenance cycle spanned <strong>12+ disconnected tools</strong>. The constant context-switching, not any one tool, was driving errors and cognitive fatigue in an environment with no tolerance for either.</p></div>
             <div class="qa-item"><span class="lbl">Why it matters</span><p><strong>Business:</strong> errors and lost time on mission-critical tasks carry safety, compliance and cost exposure. <strong>User:</strong> sustained high cognitive load and risky handoffs are unsafe and unsustainable on a 24/7 console.</p></div>
           </div>
         </div>
@@ -373,17 +373,17 @@ img{display:block;max-width:100%;}
 <section class="case-section">
   <div class="wrap">
     <div class="sec-head">
-      <span class="lbl">02 &mdash; Problem Definition</span>
+      <span class="lbl">02 · Problem Definition</span>
       <h2 class="sec-title">The real problem was the seams, not the tools</h2>
       <p class="sec-lead">Each tool did its job well in isolation. The failure was in the connective tissue: operators were the integration layer, manually carrying state, data and context across twelve systems while staying accountable for every transition.</p>
     </div>
 
     <h3 class="subh" style="margin-bottom:18px;">Constraints that shaped the brief</h3>
     <div class="cardgrid">
-      <div class="mcard"><span class="lbl">Technical</span><h4>Orchestrate, don't replace</h4><p>Source tools were certified and load-bearing. Gateway had to coordinate them through existing data feeds &mdash; replacing them was off the table.</p></div>
+      <div class="mcard"><span class="lbl">Technical</span><h4>Orchestrate, don't replace</h4><p>Source tools were certified and load-bearing. Gateway had to coordinate them through existing data feeds; replacing them was off the table.</p></div>
       <div class="mcard"><span class="lbl">Operational</span><h4>Live 24/7 console</h4><p>Control rooms never stop. Nothing could disrupt an active cycle, and any new surface had to be learnable without pulling operators off shift.</p></div>
       <div class="mcard"><span class="lbl">Compliance</span><h4>Full traceability</h4><p>Every value and action had to be auditable back to its source system. Aggregation could never obscure provenance.</p></div>
-      <div class="mcard"><span class="lbl">Environment</span><h4>Glance-critical</h4><p>Low-light rooms, large shared displays, and operators under pressure &mdash; status had to read correctly in a glance from across the room.</p></div>
+      <div class="mcard"><span class="lbl">Environment</span><h4>Glance-critical</h4><p>Low-light rooms, large shared displays, and operators under pressure: status had to read correctly in a glance from across the room.</p></div>
     </div>
 
     <h3 class="subh" style="margin:48px 0 0;">Success criteria</h3>
@@ -401,7 +401,7 @@ img{display:block;max-width:100%;}
   <div class="wrap">
     <div class="case-grid">
       <aside class="case-meta">
-        <div class="meta-item"><p class="lbl">03 &mdash; Role &amp; Scope</p><p class="meta-val">Lead UX/UI Designer</p></div>
+        <div class="meta-item"><p class="lbl">03 · Role &amp; Scope</p><p class="meta-val">Lead UX/UI Designer</p></div>
         <div class="meta-divider"></div>
         <div class="meta-item"><p class="lbl">Owned</p>
           <ul class="check-list">
@@ -416,7 +416,7 @@ img{display:block;max-width:100%;}
         <div class="case-block">
           <h2 class="case-h">End-to-end design ownership, in close loop with mission ops.</h2>
           <p class="case-p" style="margin-bottom:22px;">I led the work from discovery through delivery: framing the problem with mission-support SMEs, mapping the maintenance lifecycle, designing the interaction model and UI, building the component system, and prototyping for validation and engineering handoff.</p>
-          <p class="case-p">I partnered daily with a product manager, operations subject-matter experts, and the front-end team. To be precise about scope: I did <strong style="color:var(--ink-soft);font-weight:600;">not</strong> own the backend data contracts or the certification of the underlying source tools &mdash; my mandate was the orchestration layer and everything the operator touches.</p>
+          <p class="case-p">I partnered daily with a product manager, operations subject-matter experts, and the front-end team. To be precise about scope: I did <strong style="color:var(--ink-soft);font-weight:600;">not</strong> own the backend data contracts or the certification of the underlying source tools. My mandate was the orchestration layer and everything the operator touches.</p>
         </div>
       </div>
     </div>
@@ -427,16 +427,16 @@ img{display:block;max-width:100%;}
 <section class="case-section">
   <div class="wrap">
     <div class="sec-head">
-      <span class="lbl">04 &mdash; Discovery &amp; Insights</span>
+      <span class="lbl">04 · Discovery &amp; Insights</span>
       <h2 class="sec-title">Watching one full cycle changed the brief</h2>
       <p class="sec-lead">Inputs included SME interviews, a tool-and-task audit of a complete maintenance cycle, and contextual observation of operators on console. The goal was to find <em>where</em> the work broke down, not just <em>that</em> it did.</p>
     </div>
     <p style="margin:-14px 0 30px;"><span class="note assume"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="13"/><circle cx="12" cy="16.5" r="1"/></svg>Some research detail is reconstructed for this portfolio and labelled where inferred.</span></p>
 
     <div class="insights">
-      <div class="insight"><span class="inum">01</span><div><h4>The handoffs between tools were the problem &mdash; not the tools.</h4><p>Operators rated individual tools as fine. Failure clustered in the gaps: re-keying values, reconciling state, and confirming that what one system showed matched what the next expected.</p></div></div>
-      <div class="insight"><span class="inum">02</span><div><h4>Operators didn't want all the data &mdash; they wanted the right data for the current step.</h4><p>A maintenance cycle is sequential. At any moment only a slice of the twelve tools was relevant, yet everything competed for attention at once.</p></div></div>
-      <div class="insight"><span class="inum">03</span><div><h4>Errors concentrated at state transitions and shift handovers.</h4><p>The most dangerous moments were when a cycle moved between stages or between people &mdash; exactly where context was most likely to be dropped. <span class="note assume" style="margin-left:4px;">Inferred from task analysis</span></p></div></div>
+      <div class="insight"><span class="inum">01</span><div><h4>The handoffs between tools were the problem, not the tools.</h4><p>Operators rated individual tools as fine. Failure clustered in the gaps: re-keying values, reconciling state, and confirming that what one system showed matched what the next expected.</p></div></div>
+      <div class="insight"><span class="inum">02</span><div><h4>Operators didn't want all the data, they wanted the right data for the current step.</h4><p>A maintenance cycle is sequential. At any moment only a slice of the twelve tools was relevant, yet everything competed for attention at once.</p></div></div>
+      <div class="insight"><span class="inum">03</span><div><h4>Errors concentrated at state transitions and shift handovers.</h4><p>The most dangerous moments were when a cycle moved between stages or between people, exactly where context was most likely to be dropped. <span class="note assume" style="margin-left:4px;">Inferred from task analysis</span></p></div></div>
       <div class="insight"><span class="inum">04</span><div><h4>Trust required provenance.</h4><p>Operators would not act on an aggregated number they couldn't trace to its source system. Any summary view had to make &ldquo;where did this come from?&rdquo; a one-click answer.</p></div></div>
     </div>
   </div>
@@ -446,16 +446,16 @@ img{display:block;max-width:100%;}
 <section class="case-section">
   <div class="wrap">
     <div class="sec-head">
-      <span class="lbl">05 &mdash; Design Strategy</span>
+      <span class="lbl">05 · Design Strategy</span>
       <h2 class="sec-title">Follow the lifecycle, surface only what the step needs</h2>
-      <p class="sec-lead">Before any UI, I committed to a principle: Gateway should model the maintenance lifecycle itself, presenting only the data and actions relevant to the operator's current stage &mdash; and always keeping a path back to the source system for trust.</p>
+      <p class="sec-lead">Before any UI, I committed to a principle: Gateway should model the maintenance lifecycle itself, presenting only the data and actions relevant to the operator's current stage, and always keeping a path back to the source system for trust.</p>
     </div>
 
     <h3 class="subh" style="margin-bottom:8px;">Directions considered &amp; why I rejected them</h3>
     <div class="alts">
-      <div class="alt"><span class="verdict no">Rejected</span><div><h4>One mega-dashboard showing everything</h4><p>Putting all twelve tools on one screen just relocates the overload. It optimises for the demo, not the shift &mdash; and it directly violates insight 02.</p></div></div>
+      <div class="alt"><span class="verdict no">Rejected</span><div><h4>One mega-dashboard showing everything</h4><p>Putting all twelve tools on one screen just relocates the overload. It optimises for the demo, not the shift, and it directly violates insight 02.</p></div></div>
       <div class="alt"><span class="verdict no">Rejected</span><div><h4>Rip-and-replace the twelve tools</h4><p>Infeasible on cost, risk and certification, and explicitly out of scope. The source systems are load-bearing; the seams between them were the brief.</p></div></div>
-      <div class="alt"><span class="verdict no">Rejected</span><div><h4>A launcher / portal of links</h4><p>A tidy menu of shortcuts doesn't reduce switching &mdash; it just renames it. The operator is still the integration layer, carrying state by hand.</p></div></div>
+      <div class="alt"><span class="verdict no">Rejected</span><div><h4>A launcher / portal of links</h4><p>A tidy menu of shortcuts doesn't reduce switching, it just renames it. The operator is still the integration layer, carrying state by hand.</p></div></div>
       <div class="alt chosen"><span class="verdict yes">Chosen</span><div><h4>A state-aware lifecycle workspace</h4><p>Gateway tracks where the cycle <span class="accent">is</span> and surfaces only the relevant datasets and actions for that stage, with every value <span class="accent">deep-linked back to its source</span>. It reduces switching without hiding provenance.</p></div></div>
     </div>
   </div>
@@ -465,7 +465,7 @@ img{display:block;max-width:100%;}
 <section class="case-section">
   <div class="wrap">
     <div class="sec-head">
-      <span class="lbl">06 &mdash; Execution &middot; Key Decisions</span>
+      <span class="lbl">06 · Execution &middot; Key Decisions</span>
       <h2 class="sec-title">Four decisions that carried the design</h2>
       <p class="sec-lead">Each screen exists to serve a specific operational behaviour. The decisions below are organised by the problem they solve, not by the order they were drawn.</p>
     </div>
@@ -475,7 +475,7 @@ img{display:block;max-width:100%;}
         <div class="dshot-cap">
           <p class="dshot-num">Decision 01</p>
           <h3>A lifecycle spine, not a navigation menu</h3>
-          <p class="why">Navigation models the maintenance cycle's stages directly, so the interface always answers &ldquo;where am I and what's next?&rdquo;. <b>Why:</b> orientation cost was a hidden tax on every switch &mdash; encoding the workflow into the structure removes it.</p>
+          <p class="why">Navigation models the maintenance cycle's stages directly, so the interface always answers &ldquo;where am I and what's next?&rdquo;. <b>Why:</b> orientation cost was a hidden tax on every switch, encoding the workflow into the structure removes it.</p>
           <div class="dshot-tags"><span>Information Architecture</span><span>Wayfinding</span></div>
         </div>
         <div class="dshot-media"><image-slot id="gw-spine" shape="rect" placeholder="Drop: lifecycle / stage navigation"></image-slot><p class="cap">Stage stepper anchoring the workspace</p></div>
@@ -485,7 +485,7 @@ img{display:block;max-width:100%;}
         <div class="dshot-cap">
           <p class="dshot-num">Decision 02</p>
           <h3>A state-aware workspace that shows only the current step</h3>
-          <p class="why">The workspace serves only the datasets and actions relevant to the active stage, with the rest one deliberate step away. <b>Why:</b> directly attacks the cognitive-load insight &mdash; relevance over completeness.</p>
+          <p class="why">The workspace serves only the datasets and actions relevant to the active stage, with the rest one deliberate step away. <b>Why:</b> directly attacks the cognitive-load insight: relevance over completeness.</p>
           <div class="dshot-tags"><span>Progressive Disclosure</span><span>Task Flow</span></div>
         </div>
         <div class="dshot-media"><image-slot id="gw-workspace" shape="rect" placeholder="Drop: workspace / contextual panel"></image-slot><p class="cap">Step-relevant data and actions in focus</p></div>
@@ -495,7 +495,7 @@ img{display:block;max-width:100%;}
         <div class="dshot-cap">
           <p class="dshot-num">Decision 03</p>
           <h3>Provenance on every aggregated value</h3>
-          <p class="why">Each consolidated figure carries a source affordance that links straight back to the system of record. <b>Why:</b> operators won't act on numbers they can't trace &mdash; and compliance demanded full auditability.</p>
+          <p class="why">Each consolidated figure carries a source affordance that links straight back to the system of record. <b>Why:</b> operators won't act on numbers they can't trace, and compliance demanded full auditability.</p>
           <div class="dshot-tags"><span>Trust &amp; Traceability</span><span>Data Viz</span></div>
         </div>
         <div class="dshot-media"><image-slot id="gw-trace" shape="rect" placeholder="Drop: data card with source-trace link"></image-slot><p class="cap">&ldquo;Where did this come from?&rdquo; in one click</p></div>
@@ -505,7 +505,7 @@ img{display:block;max-width:100%;}
         <div class="dshot-cap">
           <p class="dshot-num">Decision 04</p>
           <h3>Safe-by-default actions at the riskiest moments</h3>
-          <p class="why">State transitions and handovers use confirmation and reversible patterns, with status that reads from across a low-lit room. <b>Why:</b> errors clustered exactly here &mdash; so the friction is intentional and placed precisely.</p>
+          <p class="why">State transitions and handovers use confirmation and reversible patterns, with status that reads from across a low-lit room. <b>Why:</b> errors clustered exactly here, so the friction is intentional and placed precisely.</p>
           <div class="dshot-tags"><span>Error Prevention</span><span>Glanceability</span></div>
         </div>
         <div class="dshot-media"><image-slot id="gw-safe" shape="rect" placeholder="Drop: transition / handover confirmation"></image-slot><p class="cap">Deliberate friction at state changes</p></div>
@@ -519,28 +519,28 @@ img{display:block;max-width:100%;}
   <div class="wrap">
     <div class="ds-grid">
       <div>
-        <span class="lbl" style="display:block;margin-bottom:20px;">07 &mdash; System Thinking</span>
+        <span class="lbl" style="display:block;margin-bottom:20px;">07 · System Thinking</span>
         <h2 class="sec-title">One system, built to scale across missions</h2>
-        <p class="ds-lead">Gateway is a component library and token set, not a set of one-off screens &mdash; so the same patterns extend to new mission types and tools without redesign. It aligns to ESA's brand palette, tuned for low-light operational legibility.</p>
+        <p class="ds-lead">Gateway is a component library and token set, not a set of one-off screens, so the same patterns extend to new mission types and tools without redesign. It aligns to ESA's brand palette, tuned for low-light operational legibility.</p>
         <div class="swatches">
           <div class="swatch">
             <span class="chip" style="background:#003263;"></span>
-            <div><p class="sname">ESA Deep Space Blue</p><p class="lbl">#003263 &mdash; Primary / Chrome</p></div>
+            <div><p class="sname">ESA Deep Space Blue</p><p class="lbl">#003263 · Primary / Chrome</p></div>
           </div>
           <div class="swatch">
             <span class="chip" style="background:#009FE3;"></span>
-            <div><p class="sname">Active Azure</p><p class="lbl">#009FE3 &mdash; Active / Selected</p></div>
+            <div><p class="sname">Active Azure</p><p class="lbl">#009FE3 · Active / Selected</p></div>
           </div>
           <div class="swatch">
             <span class="chip" style="background:#FFD200;"></span>
-            <div><p class="sname">Critical Yellow</p><p class="lbl">#FFD200 &mdash; Alerts / Attention</p></div>
+            <div><p class="sname">Critical Yellow</p><p class="lbl">#FFD200 · Alerts / Attention</p></div>
           </div>
         </div>
       </div>
       <div class="type-card">
         <span class="lbl">Core Components</span>
         <p class="tspec" style="font-size:clamp(30px,3.4vw,42px);line-height:1.08;">Stage stepper, source-traced data card, status chip, safe-action dialog</p>
-        <p class="tdesc">A small, opinionated kit covers the recurring jobs &mdash; tracking lifecycle state, presenting traceable data, signalling status at a glance, and confirming risky transitions &mdash; so consistency is the default, not an act of discipline.</p>
+        <p class="tdesc">A small, opinionated kit covers the recurring jobs of tracking lifecycle state, presenting traceable data, signalling status at a glance and confirming risky transitions, so consistency is the default, not an act of discipline.</p>
         <div class="tdiv"></div>
         <div class="type-foot">
           <div><p class="tspec2">Inter</p><span class="lbl">High-legibility System UI</span></div>
@@ -555,7 +555,7 @@ img{display:block;max-width:100%;}
 <section class="case-section">
   <div class="wrap">
     <div class="impact">
-      <span class="lbl">08 &mdash; Impact</span>
+      <span class="lbl">08 · Impact</span>
       <h2>Operational friction down <em class="accent" style="font-style:normal;">35%</em> and roughly <em class="accent" style="font-style:normal;">10 minutes</em> saved on the average mission-critical cycle.</h2>
     </div>
 
@@ -570,7 +570,7 @@ img{display:block;max-width:100%;}
       <div class="mcard"><span class="lbl">User value</span><h4>Lower cognitive load, safer handovers</h4><p>Operators run a cycle without re-keying or reconciling across tools, and risky moments are guarded by intent rather than memory.</p></div>
       <div class="mcard"><span class="lbl">Business value</span><h4>Less rework, faster onboarding, clean audit</h4><p>Time and error reductions compound on mission-critical work, learnability shortens ramp-up, and built-in provenance keeps compliance cheap.</p></div>
     </div>
-    <p class="case-p" style="margin-top:24px;max-width:64ch;font-size:14.5px;">Where a metric isn't yet measured it's labelled <span class="note proj" style="color:var(--accent);border-color:rgba(207,90,44,.4);">Projected</span> &mdash; the error reduction follows directly from concentrating design effort at the transition and handover points where errors were observed to cluster.</p>
+    <p class="case-p" style="margin-top:24px;max-width:64ch;font-size:14.5px;">Where a metric isn't yet measured it's labelled <span class="note proj" style="color:var(--accent);border-color:rgba(207,90,44,.4);">Projected</span>, the error reduction follows directly from concentrating design effort at the transition and handover points where errors were observed to cluster.</p>
   </div>
 </section>
 
@@ -578,7 +578,7 @@ img{display:block;max-width:100%;}
 <section class="case-section">
   <div class="wrap">
     <div class="sec-head">
-      <span class="lbl">09 &mdash; Reflection</span>
+      <span class="lbl">09 · Reflection</span>
       <h2 class="sec-title">What I'd carry forward</h2>
     </div>
     <div class="reflect">
@@ -603,7 +603,7 @@ img{display:block;max-width:100%;}
         <h4>Orchestration beats replacement</h4>
         <ul>
           <li>In legacy-heavy enterprise, the highest-leverage design often lives in the seams, not the tools.</li>
-          <li>Trust is a design material &mdash; and tight constraints, read correctly, are the clearest brief you'll get.</li>
+          <li>Trust is a design material, and tight constraints, read correctly, are the clearest brief you'll get.</li>
         </ul>
       </div>
     </div>
