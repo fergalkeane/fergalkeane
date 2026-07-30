@@ -1,0 +1,7 @@
+User-agent: *
+# Locked case studies (password protected). Remove these lines if the gate is lifted.
+Disallow: /portfolio/Gateway.html
+Disallow: /portfolio/BlueDrop%20Medical.html
+Disallow: /portfolio/RealWorld.html
+
+Allow: /

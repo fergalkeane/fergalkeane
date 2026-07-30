@@ -8,13 +8,33 @@ css.textContent=[
 ':root[data-theme="dark"] .nav-links{background:var(--paper);}',
 ':root[data-theme="dark"] img,:root[data-theme="dark"] image-slot{filter:brightness(.94);}',
 ':root[data-theme="dark"] .frame,:root[data-theme="dark"] .frame-bar{background:var(--paper-2);}',
+'D .gate button,D .btn-solid,D .verdict.yes,D .send-btn{color:var(--paper);}',
+'D .dl-resume{color:var(--ink);border-color:var(--line);}',
+'D .dl-resume:hover{background:var(--ink);color:var(--paper);}',
+'D .stat-num,D .number b{color:var(--ink);}',
+'.hero-banner image-slot:not([data-filled])~.hero-content{opacity:.3;}',
+'D image-slot{color:rgba(255,255,255,.82);}',
+'D .ba{background:var(--paper-2);border-color:var(--line);}',
+'D .ba-head{border-color:var(--line-soft);}',
+'D .ba-cell{border-color:var(--line-soft);}',
+'D .panel{background:var(--paper-2);border-color:var(--line);}',
+'D .panel.dark{background:#141412;border-color:#141412;}',
+'D .card.dark{background:var(--paper-2);color:var(--ink);border-color:var(--line);}',
+'D .card.dark .lbl{color:var(--muted);}',
+'D .awards li{color:var(--ink-soft);}',
+'D .awards b{color:var(--ink);}',
+'D .field input,D .field select,D .field textarea{background:var(--paper-2);color:var(--ink);border-color:var(--line);}',
+'D .field input::placeholder,D .field textarea::placeholder{color:var(--muted-2);}',
+'D .skill-list span,D .tag-grid span,D .tag{background:var(--paper-2);color:var(--ink-soft);border-color:var(--line);}',
+'D .rhead-rule,D .sec-label{border-color:var(--line);}',
+':root[data-theme="dark"] .proj-go,:root[data-theme="dark"] .lock-badge{background:var(--paper-2);color:var(--ink);}',
 '.theme-btn{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:1px solid var(--line);border-radius:50%;background:none;color:var(--ink-soft);cursor:pointer;padding:0;flex:none;transition:border-color .18s ease,color .18s ease;}',
 '.theme-btn:hover{border-color:var(--ink);color:var(--ink);}',
 '.theme-btn svg{width:14px;height:14px;}',
 '.theme-btn .ic-moon{display:none;}',
 ':root[data-theme="dark"] .theme-btn .ic-moon{display:block;}',
 ':root[data-theme="dark"] .theme-btn .ic-sun{display:none;}'
-].join('');
+].join('').replace(/\bD /g,':root[data-theme="dark"] ');
 document.head.appendChild(css);
 var stored=null;try{stored=localStorage.getItem(KEY);}catch(e){}
 document.documentElement.setAttribute('data-theme',stored==='dark'?'dark':'light');
