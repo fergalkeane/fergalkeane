@@ -163,7 +163,12 @@ img{display:block;max-width:100%;}
   border-top:1px solid var(--ink);padding-top:16px;margin-bottom:54px;
 }
 .works-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:48px;row-gap:74px;align-items:start;}
-.proj{margin-bottom:0;}
+.proj{margin-bottom:0;position:relative;}
+.proj-cap{position:absolute;left:clamp(20px,2.4vw,30px);right:clamp(20px,2.4vw,30px);bottom:clamp(20px,2.4vw,28px);z-index:4;display:flex;flex-direction:column;gap:8px;pointer-events:none;}
+.proj-cap .proj-title,.proj-cap .proj-title a{color:#fff;}
+.proj-cap .proj-meta{color:rgba(255,255,255,.72);margin:0;}
+.proj-cap a{pointer-events:auto;}
+.proj-img::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to top,rgba(10,10,10,.82) 0%,rgba(10,10,10,.45) 34%,rgba(10,10,10,0) 66%);}
 .proj-img{position:relative;overflow:hidden;background:var(--paper-2);border:1px solid var(--line-soft);}
 .proj-img image-slot{display:block;position:absolute;inset:0;width:100%;height:100%;z-index:0;}
 .proj.tall .proj-img{aspect-ratio:4/3;}
@@ -180,6 +185,7 @@ a.proj-go{pointer-events:auto;cursor:pointer;text-decoration:none;}
 .proj:hover a.proj-go,.proj.show-go a.proj-go{opacity:1;transform:translate(-50%,-50%) scale(1);}
 .lock-badge{position:absolute;top:14px;right:14px;z-index:3;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.92);color:var(--ink);display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,.14);backdrop-filter:blur(4px);}
 .proj-meta{margin:20px 0 8px;}
+.proj:hover .proj-cap .proj-title,.proj:hover .proj-cap .proj-title a{color:var(--accent);}
 .proj-title{
   font-family:var(--font-display);font-weight:700;font-size:clamp(22px,2.3vw,28px);
   letter-spacing:-.01em;line-height:1.05;transition:color .18s ease;
@@ -222,6 +228,10 @@ a.proj-go{pointer-events:auto;cursor:pointer;text-decoration:none;}
   border-top:1px solid var(--line-soft);margin-top:96px;padding:24px 0 40px;
 }
 .footbar a:hover{color:var(--accent);}
+.footbar-links{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.art-btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);border:1px solid var(--ink);padding:11px 18px;transition:background .18s ease,color .18s ease,border-color .18s ease;}
+.art-btn:hover{background:var(--ink);color:var(--paper);}
+.art-btn .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none;}
 
 /* ============ RESPONSIVE ============ */
 @media(max-width:1024px){
@@ -242,6 +252,10 @@ a.proj-go{pointer-events:auto;cursor:pointer;text-decoration:none;}
   .intro{padding:56px 0 64px;}
   .works-grid{grid-template-columns:1fr;column-gap:0;row-gap:44px;}
   .proj{display:flex;flex-direction:column;padding-bottom:44px;border-bottom:1px solid var(--line);}
+  .proj-cap{display:contents;}
+  .proj .proj-title,.proj .proj-title a{color:var(--ink);}
+  .proj .proj-meta{color:var(--muted);}
+  .proj-img::after{display:none;}
   .proj .proj-title{order:1;margin:0 0 18px;}
   .proj .proj-img{order:2;}
   .proj .proj-meta{order:3;margin:16px 0 0;}
@@ -295,44 +309,36 @@ a.proj-go{pointer-events:auto;cursor:pointer;text-decoration:none;}
     </div>
     <div class="works-grid">
       <article class="proj wide locked show-go">
-          <div class="proj-img"><image-slot shape="rect" id="p-realworld" src="images/realworld/RealWorld_Marine_Dashboard.png" placeholder="Real World"></image-slot><a href="portfolio/RealWorld.html" class="proj-go" aria-label="View Real World case study"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a><span class="lock-badge" title="Password protected"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="1.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></div>
-          <p class="lbl proj-meta">Fintech &amp; Insurtech / Product Design / 2022</p>
-          <h3 class="proj-title"><a href="portfolio/RealWorld.html">Real World</a></h3>
+          <div class="proj-img"><image-slot shape="rect" id="p-realworld" src="images/realworld/RealWorld_Reporting.jpg" placeholder="Real World"></image-slot><a href="portfolio/RealWorld.html" class="proj-go" aria-label="View Real World case study"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a><span class="lock-badge" title="Password protected"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="1.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></div>
+          <div class="proj-cap"><h3 class="proj-title"><a href="portfolio/RealWorld.html">Real World</a></h3><p class="lbl proj-meta">Fintech &amp; Insurtech / Product Design / 2022</p></div>
         </article>
       <article class="proj wide locked show-go">
-          <div class="proj-img"><image-slot shape="rect" id="p-gateway" placeholder="Drop Gateway screenshot"></image-slot><a href="portfolio/Gateway.html" class="proj-go" aria-label="View Gateway case study"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a><span class="lock-badge" title="Password protected"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="1.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></div>
-          <p class="lbl proj-meta">Enterprise SaaS / UX Design / 2024</p>
-          <h3 class="proj-title"><a href="portfolio/Gateway.html">Gateway</a></h3>
+          <div class="proj-img"><image-slot shape="rect" id="p-gateway" src="images/gateway/Gateway_Moon.jpg" placeholder="Drop Gateway screenshot"></image-slot><a href="portfolio/Gateway.html" class="proj-go" aria-label="View Gateway case study"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a><span class="lock-badge" title="Password protected"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="1.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></div>
+          <div class="proj-cap"><h3 class="proj-title"><a href="portfolio/Gateway.html">Gateway</a></h3><p class="lbl proj-meta">Enterprise SaaS / UX Design / 2024</p></div>
         </article>
       <article class="proj wide show-go">
           <div class="proj-img"><image-slot shape="rect" id="p-satclub" src="https://satellite-club.skytek.com/wp-content/uploads/2024/04/featured-image-baltimore-port-1-scaled.webp" placeholder="Drop Satellite Club screenshot"></image-slot><a href="portfolio/Satellite Club.html" class="proj-go" aria-label="View Satellite Club case study"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
-          <p class="lbl proj-meta">Earth Observation / Product &amp; UX Design / 2026</p>
-          <h3 class="proj-title"><a href="portfolio/Satellite Club.html">Satellite Club</a></h3>
+          <div class="proj-cap"><h3 class="proj-title"><a href="portfolio/Satellite Club.html">Satellite Club</a></h3><p class="lbl proj-meta">Earth Observation / Product &amp; UX Design / 2026</p></div>
         </article>
       <article class="proj wide show-go">
           <div class="proj-img"><image-slot shape="rect" id="p-daverns" src="images/daverns/Daverns_Heritage.jpg" placeholder="Daverns of Cashel"></image-slot><a href="portfolio/Daverns of Cashel.html" class="proj-go" aria-label="View Daverns of Cashel case study"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
-          <p class="lbl proj-meta">Luxury Retail &amp; E-Commerce / Web Design / 2025</p>
-          <h3 class="proj-title"><a href="portfolio/Daverns of Cashel.html">Daverns of Cashel</a></h3>
+          <div class="proj-cap"><h3 class="proj-title"><a href="portfolio/Daverns of Cashel.html">Daverns of Cashel</a></h3><p class="lbl proj-meta">Luxury Retail &amp; E-Commerce / Web Design / 2025</p></div>
         </article>
       <article class="proj wide show-go">
         <div class="proj-img"><image-slot shape="rect" id="p-alison" placeholder="Drop Alison screenshot"></image-slot><a href="portfolio/Alison.html" class="proj-go" aria-label="View Alison case study"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
-          <p class="lbl proj-meta">E-Learning / Brand &amp; Web Design / Rebrand</p>
-          <h3 class="proj-title"><a href="portfolio/Alison.html">Alison</a></h3>
+          <div class="proj-cap"><h3 class="proj-title"><a href="portfolio/Alison.html">Alison</a></h3><p class="lbl proj-meta">E-Learning / Brand &amp; Web Design / Rebrand</p></div>
         </article>
       <article class="proj wide locked show-go">
           <div class="proj-img"><image-slot shape="rect" id="p-bluedrop" src="images/bluedrop/BlueDrop_Hero.jpg" placeholder="BlueDrop Medical"></image-slot><a href="portfolio/BlueDrop Medical.html" class="proj-go" aria-label="View BlueDrop Medical case study"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a><span class="lock-badge" title="Password protected"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="1.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></div>
-          <p class="lbl proj-meta">MedTech &amp; Brand Identity / Brand &amp; Web Design / 2020</p>
-          <h3 class="proj-title"><a href="portfolio/BlueDrop Medical.html">BlueDrop Medical</a></h3>
+          <div class="proj-cap"><h3 class="proj-title"><a href="portfolio/BlueDrop Medical.html">BlueDrop Medical</a></h3><p class="lbl proj-meta">MedTech &amp; Brand Identity / Brand &amp; Web Design / 2020</p></div>
         </article>
       <article class="proj wide show-go">
           <div class="proj-img"><image-slot shape="rect" id="p-atingi" placeholder="Drop atingi screenshot"></image-slot><a href="portfolio/atingi.html" class="proj-go" aria-label="View atingi case study"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
-          <p class="lbl proj-meta">Digital Learning / Product &amp; UX Design / GIZ</p>
-          <h3 class="proj-title"><a href="portfolio/atingi.html">atingi</a></h3>
+          <div class="proj-cap"><h3 class="proj-title"><a href="portfolio/atingi.html">atingi</a></h3><p class="lbl proj-meta">Digital Learning / Product &amp; UX Design / GIZ</p></div>
         </article>
       <article class="proj wide show-go">
           <div class="proj-img"><image-slot shape="rect" id="p-fitz" placeholder="Drop FitzGerald's screenshot"></image-slot><a href="portfolio/FitzGeralds of Kells.html" class="proj-go" aria-label="View FitzGerald's of Kells case study"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></div>
-          <p class="lbl proj-meta">Bespoke Furniture / Brand &amp; Web Design / Rebrand</p>
-          <h3 class="proj-title"><a href="portfolio/FitzGeralds of Kells.html">FitzGerald's of Kells</a></h3>
+          <div class="proj-cap"><h3 class="proj-title"><a href="portfolio/FitzGeralds of Kells.html">FitzGerald's of Kells</a></h3><p class="lbl proj-meta">Bespoke Furniture / Brand &amp; Web Design / Rebrand</p></div>
         </article>
     </div>
   </div>
@@ -355,7 +361,10 @@ a.proj-go{pointer-events:auto;cursor:pointer;text-decoration:none;}
     </div>
     <div class="footbar">
       <p class="lbl">© 2026 Design by Fergal Keane</p>
-      <a class="lbl" href="Experience.html">Experience ↗</a>
+      <div class="footbar-links">
+        <a class="art-btn" href="art.html"><span class="dot"></span>Fergal Keane, Art</a>
+        <a class="lbl" href="Experience.html">Experience ↗</a>
+      </div>
     </div>
   </div>
 </section>

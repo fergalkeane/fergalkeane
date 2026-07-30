@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fergal Keane, Art</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<style>
+@font-face{font-family:'Space Grotesk';src:url('fonts/SpaceGrotesk-VariableFont_wght.ttf') format('truetype');font-weight:300 700;font-style:normal;font-display:swap;}
+:root{
+  --font-display:'Space Grotesk','Archivo',system-ui,sans-serif;
+  --font-sans:'Archivo',system-ui,sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,monospace;
+  --ink:#f3f1ee;--ink-soft:#e4e1dc;--muted:#8e8a85;--muted-2:#6d6963;
+  --line:#2b2b29;--line-soft:#212120;--paper:#0e0e0e;--paper-2:#181817;--accent:#e2733f;
+  --maxw:1360px;--pad:56px;
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+a:hover{color:var(--accent);}
+img{display:block;max-width:100%;}
+::selection{background:var(--accent);color:#fff;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad);}
+.lbl{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);}
+.accent{color:var(--accent);}
+/* NAV */
+.nav{position:sticky;top:0;z-index:50;background:rgba(14,14,14,.86);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line-soft);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;}
+.brand{display:flex;align-items:baseline;gap:12px;}
+.brand b{font-family:var(--font-display);font-weight:800;font-size:15px;letter-spacing:.04em;text-transform:uppercase;}
+.brand span{font-family:var(--font-mono);font-size:10px;letter-spacing:.2em;color:var(--muted);}
+.nav-links{display:flex;align-items:center;gap:28px;}
+.nav-links a{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
+.nav-links a:hover{color:var(--ink);}
+/* MASTHEAD */
+.mast{padding:76px 0 0;}
+.mast h1{font-family:var(--font-display);font-weight:800;font-size:clamp(44px,7.4vw,104px);line-height:.92;letter-spacing:-.025em;margin:18px 0 0;max-width:12ch;}
+.mast-row{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(40px,5.4vw,80px);align-items:start;margin-top:34px;padding-bottom:64px;border-bottom:1px solid var(--line-soft);}
+.mast-side{display:flex;flex-direction:column;gap:26px;}
+.portrait{position:relative;background:var(--paper-2);border:1px solid var(--line);}
+.portrait img{filter:brightness(.92) contrast(1.02);}
+image-slot{color:rgba(255,255,255,.8);}
+.portrait img{width:100%;height:auto;display:block;}
+.portrait figcaption{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);padding:12px 2px 0;}
+.about p{margin:0 0 18px;color:var(--muted);font-size:16px;line-height:1.68;max-width:52ch;text-wrap:pretty;}
+.about p b{color:var(--ink);font-weight:500;}
+.about p:last-child{margin-bottom:0;}
+.facts{display:flex;flex-direction:column;gap:22px;padding-top:6px;}
+.facts .row{display:flex;flex-direction:column;gap:6px;padding-bottom:20px;border-bottom:1px solid var(--line-soft);}
+.facts .row:last-child{border-bottom:0;padding-bottom:0;}
+.facts .mv,.enq .mv{font-family:var(--font-display);font-weight:600;font-size:19px;letter-spacing:-.01em;margin:0;}
+.enq{margin-top:30px;padding-top:22px;border-top:1px solid var(--line-soft);display:flex;flex-direction:column;gap:6px;}
+/* GALLERY */
+.gal{padding:70px 0 40px;}
+.gal-head{display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap;margin-bottom:34px;}
+.gal-head h2{font-family:var(--font-display);font-weight:700;font-size:clamp(22px,2.6vw,32px);letter-spacing:-.02em;margin:0;}
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.7vw,26px);}
+.tile{position:relative;background:var(--paper-2);border:1px solid var(--line);cursor:pointer;overflow:hidden;}
+.tile image-slot{width:100%;height:100%;}
+.tile.t-tall{grid-row:span 2;}
+.tile .cap{position:absolute;left:0;right:0;bottom:0;z-index:3;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;padding:16px 18px;opacity:0;transform:translateY(6px);transition:opacity .22s ease,transform .22s ease;background:linear-gradient(to top,rgba(10,10,10,.8),rgba(10,10,10,0));pointer-events:none;}
+.tile .cap .t{font-family:var(--font-display);font-weight:600;font-size:15px;color:#fff;margin:0;}
+.tile .cap .m{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.72);margin:0;}
+.tile:hover .cap{opacity:1;transform:none;}
+.tile[data-ready] .cap{display:flex;}
+/* LIGHTBOX */
+.lb{position:fixed;inset:0;z-index:200;display:none;background:rgba(8,8,8,.95);}
+.lb.open{display:block;}
+.lb-stage{position:absolute;inset:64px 78px 82px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.lb-stage img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;box-shadow:0 30px 80px rgba(0,0,0,.5);}
+.lb.zoomed .lb-stage{overflow:auto;align-items:flex-start;justify-content:flex-start;cursor:grab;}
+.lb.zoomed .lb-stage img{max-width:none;max-height:none;cursor:zoom-out;}
+.lb:not(.zoomed) .lb-stage img{cursor:zoom-in;}
+.lb-tools{position:absolute;top:18px;left:18px;display:flex;gap:8px;z-index:4;}
+.lb-tool{width:42px;height:42px;border:1px solid rgba(255,255,255,.28);background:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .18s ease,border-color .18s ease,opacity .18s ease;}
+.lb-tool:hover{background:rgba(255,255,255,.12);border-color:#fff;}
+.lb-tool[disabled]{opacity:.35;cursor:default;}
+.lb-bar{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:22px 30px;color:rgba(255,255,255,.72);font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;}
+.lb-bar .name{color:#fff;letter-spacing:.06em;text-transform:none;font-family:var(--font-display);font-size:15px;font-weight:600;}
+.lb-btn{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border:1px solid rgba(255,255,255,.28);background:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .18s ease,border-color .18s ease;}
+.lb-btn:hover{background:rgba(255,255,255,.12);border-color:#fff;}
+.lb-prev{left:18px;}
+.lb-next{right:18px;}
+.lb-close{position:absolute;top:18px;right:18px;width:42px;height:42px;border:1px solid rgba(255,255,255,.28);background:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .18s ease;}
+.lb-close:hover{background:rgba(255,255,255,.12);}
+/* FOOT */
+.foot{border-top:1px solid var(--line-soft);margin-top:40px;}
+.footbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;padding:24px var(--pad) 46px;}
+@media(max-width:900px){
+  :root{--pad:24px;}
+  .mast-row{grid-template-columns:1fr;gap:44px;}
+  .gal-grid{grid-template-columns:repeat(2,1fr);}
+  .lb-stage{inset:56px 20px 88px;}
+  .lb-btn{width:38px;height:38px;}
+}
+@media(max-width:600px){
+  .gal-grid{grid-template-columns:1fr;}
+  .tile.t-tall{grid-row:span 1;}
+  .tile .cap{opacity:1;transform:none;}
+}
+</style>
+</head>
+<body id="top">
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="home.html"><b>Fergal Keane</b><span>Art</span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="home.html">← Design Work</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="mast">
+  <div class="wrap">
+    <p class="lbl">Paintings &amp; Drawings</p>
+    <h1>Fergal Keane, Art</h1>
+    <div class="mast-row">
+      <div class="about">
+        <p><b>Fergal Keane is an Irish artist known for his distinctive approach to visual art.</b> Born in County Wexford, Keane's early life was deeply influenced by the landscape and historic narratives of his surroundings.</p>
+        <p>Keane was always drawn to creative expression, and his passion led him to pursue formal education in the arts and a career in design. His first introduction to art was under the tutorship of well-renowned artist Eamonn Carter, a founding member of the Gorey Arts Centre. The north Wexford area has become a melting pot of creativity mostly due to Carter and others.</p>
+        <p>Keane's art has been exhibited in galleries in Wexford and Dublin. He now lives and works in the picturesque village of Stepaside in the foothills of the Dublin mountains.</p>
+        <div class="enq"><p class="lbl">Enquiries</p><p class="mv"><a href="mailto:studio@fergalkeane.com">studio@fergalkeane.com</a></p></div>
+      </div>
+      <div class="mast-side">
+      <figure class="portrait" style="margin:0"><img src="images/art/Fergal_Keane_Studio.jpg" alt="Fergal Keane working on a large graphite drawing in the studio"></figure>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="gal">
+  <div class="wrap">
+    <div class="gal-head">
+      <h2>Selected works</h2>
+      <p class="lbl">Click any piece to enlarge</p>
+    </div>
+    <div class="gal-grid" id="galGrid">
+      <figure class="tile" style="margin:0"><img src="images/art/artwork_002_thumb.jpg" data-full="images/art/artwork_002.jpg" loading="lazy" alt="Figure in a red vest falling backwards through cloud" style="aspect-ratio:1/1;object-fit:cover;width:100%"><figcaption class="cap"><p class="t">Elevation 1</p><p class="m">Acrylic on canvas</p></figcaption></figure>
+      <figure class="tile" style="margin:0"><img src="images/art/artwork_004_thumb.jpg" data-full="images/art/artwork_004.jpg" loading="lazy" alt="Figure in a blue shirt suspended mid-leap against a warm ground" style="aspect-ratio:1/1;object-fit:cover;width:100%"><figcaption class="cap"><p class="t">Elevation 2</p><p class="m">Acrylic on canvas</p></figcaption></figure>
+      <figure class="tile" style="margin:0"><img src="images/art/artwork_005_thumb.jpg" data-full="images/art/artwork_005.jpg" loading="lazy" alt="Man from behind, arms outstretched against a blue sky" style="aspect-ratio:1/1;object-fit:cover;width:100%"><figcaption class="cap"><p class="t">Over Here</p><p class="m">Acrylic on canvas</p></figcaption></figure>
+      <figure class="tile" style="margin:0"><img src="images/art/artwork_003_thumb.jpg" data-full="images/art/artwork_003.jpg" loading="lazy" alt="Dancer in a yellow dress suspended against a pale sky" style="aspect-ratio:1/1;object-fit:cover;width:100%"><figcaption class="cap"><p class="t">Golden Flight</p><p class="m">Acrylic on canvas</p></figcaption></figure>
+    </div>
+  </div>
+</section>
+<section class="foot">
+  <div class="wrap footbar">
+    <p class="lbl">© 2026 Fergal Keane</p>
+    <a class="lbl" href="home.html">Back to design work ↗</a>
+  </div>
+</section>
+</main>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Artwork viewer">
+  <button class="lb-close" id="lbClose" aria-label="Close"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg></button>
+  <div class="lb-tools">
+    <button class="lb-tool" id="lbOut" aria-label="Zoom out"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10.5" cy="10.5" r="6.5"/><line x1="15.5" y1="15.5" x2="21" y2="21"/><line x1="7.5" y1="10.5" x2="13.5" y2="10.5"/></svg></button>
+    <button class="lb-tool" id="lbIn" aria-label="Zoom in"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10.5" cy="10.5" r="6.5"/><line x1="15.5" y1="15.5" x2="21" y2="21"/><line x1="7.5" y1="10.5" x2="13.5" y2="10.5"/><line x1="10.5" y1="7.5" x2="10.5" y2="13.5"/></svg></button>
+  </div>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 5 8 12 15 19"/></svg></button>
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Next"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 5 16 12 9 19"/></svg></button>
+  <div class="lb-stage"><img id="lbImg" alt=""></div>
+  <div class="lb-bar"><span class="name" id="lbName"></span><span id="lbCount"></span></div>
+</div>
+<script>
+(function(){
+  var tiles=[].slice.call(document.querySelectorAll('#galGrid .tile'));
+  var lb=document.getElementById('lb'),img=document.getElementById('lbImg'),
+      nameEl=document.getElementById('lbName'),countEl=document.getElementById('lbCount');
+  var order=[],idx=0;
+  function srcOf(t){
+    var direct=t.querySelector('img');
+    if(direct)return direct.getAttribute('data-full')||direct.src;
+    var s=t.querySelector('image-slot');
+    if(!s||!s.hasAttribute('data-filled'))return null;
+    var i=s.shadowRoot&&s.shadowRoot.querySelector('img[part="image"]');
+    return i&&i.src?i.src:null;
+  }
+  function show(i){
+    order=tiles.filter(srcOf);
+    if(!order.length)return;
+    idx=(i+order.length)%order.length;
+    var t=order[idx];
+    img.src=srcOf(t);
+    var n=t.querySelector('.cap .t'),m=t.querySelector('.cap .m');
+    nameEl.textContent=(n?n.textContent:'')+(m?'  ·  '+m.textContent:'');
+    countEl.textContent=(idx+1)+' / '+order.length;
+    setZoom(1);
+    lb.classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  function close(){lb.classList.remove('open');setZoom(1);img.removeAttribute('src');document.body.style.overflow='';}
+  tiles.forEach(function(t){
+    t.addEventListener('click',function(e){
+      if(!srcOf(t))return; // empty slot: let image-slot handle the drop/pick
+      e.preventDefault();
+      order=tiles.filter(srcOf);
+      show(order.indexOf(t));
+    });
+  });
+  var zoom=1,stage=lb.querySelector('.lb-stage'),fit=null;
+  function setZoom(z){
+    zoom=Math.max(1,Math.min(4,z));
+    if(zoom===1){img.style.width='';img.style.height='';fit=null;}
+    else{
+      if(!fit)fit={w:img.clientWidth,h:img.clientHeight};
+      img.style.width=(fit.w*zoom)+'px';img.style.height=(fit.h*zoom)+'px';
+    }
+    lb.classList.toggle('zoomed',zoom>1);
+    document.getElementById('lbOut').disabled=zoom<=1;
+    document.getElementById('lbIn').disabled=zoom>=4;
+    if(zoom>1){requestAnimationFrame(function(){stage.scrollLeft=(stage.scrollWidth-stage.clientWidth)/2;stage.scrollTop=(stage.scrollHeight-stage.clientHeight)/2;});}
+  }
+  document.getElementById('lbIn').addEventListener('click',function(){setZoom(zoom+.5);});
+  document.getElementById('lbOut').addEventListener('click',function(){setZoom(zoom-.5);});
+  img.addEventListener('click',function(e){e.stopPropagation();setZoom(zoom>1?1:2);});
+  var drag=null;
+  stage.addEventListener('pointerdown',function(e){if(zoom<=1)return;drag={x:e.clientX,y:e.clientY,l:stage.scrollLeft,t:stage.scrollTop};stage.setPointerCapture(e.pointerId);});
+  stage.addEventListener('pointermove',function(e){if(!drag)return;stage.scrollLeft=drag.l-(e.clientX-drag.x);stage.scrollTop=drag.t-(e.clientY-drag.y);});
+  stage.addEventListener('pointerup',function(){drag=null;});
+  document.getElementById('lbClose').addEventListener('click',close);
+  document.getElementById('lbPrev').addEventListener('click',function(){show(idx-1);});
+  document.getElementById('lbNext').addEventListener('click',function(){show(idx+1);});
+  lb.addEventListener('click',function(e){if(e.target===lb||e.target.parentNode.className==='lb-stage')close();});
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('open'))return;
+    if(e.key==='Escape')close();
+    if(e.key==='+'||e.key==='=')setZoom(zoom+.5);
+    if(e.key==='-')setZoom(zoom-.5);
+    if(zoom>1)return;
+    if(e.key==='ArrowLeft')show(idx-1);
+    if(e.key==='ArrowRight')show(idx+1);
+  });
+})();
+</script>
+</body>
+</html>
