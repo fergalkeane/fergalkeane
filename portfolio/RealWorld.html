@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<!-- Locked case study: keep out of search indexes. Delete this line if the password gate is removed. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="googlebot" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Real World — Case Study · Fergal Keane</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,7 +49,7 @@ img{display:block;max-width:100%;}
 .nav-toggle{display:none;}
 
 /* —— BACK —— */
-.backbar{padding:30px 0 0;}
+.backbar{padding:30px var(--pad) 0;}
 .back-link{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
 .back-link:hover{color:var(--accent);}
 
@@ -177,10 +180,12 @@ img{display:block;max-width:100%;}
 }
 
 /* —— PASSWORD GATE —— */
-.gate{position:fixed;inset:0;z-index:999;background:var(--paper);display:flex;align-items:center;justify-content:center;padding:24px;}
+.gate{position:fixed;inset:0;z-index:999;background:rgba(12,12,12,.5);backdrop-filter:blur(9px) saturate(120%);display:flex;align-items:center;justify-content:center;padding:24px;animation:gateIn .22s ease both;}
+@keyframes gateIn{from{opacity:0}to{opacity:1}}
+@keyframes gateCardIn{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:none}}
 .gate.hidden{display:none;}
-.gate-card{max-width:430px;width:100%;}
-.gate-lock{width:56px;height:56px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink);margin-bottom:30px;}
+.gate-card{max-width:440px;width:100%;background:var(--paper);border:1px solid var(--line);box-shadow:0 34px 90px rgba(0,0,0,.32);padding:clamp(28px,4vw,44px);animation:gateCardIn .3s cubic-bezier(.2,.7,.3,1) both;}
+.gate-lock{width:52px;height:52px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink);margin-bottom:24px;}
 .gate-card .lbl{display:block;margin-bottom:14px;}
 .gate-card h2{font-family:var(--font-display);font-weight:300;font-size:31px;line-height:1.14;letter-spacing:-.015em;margin:0 0 12px;}
 .gate-sub{color:var(--muted);font-size:14px;line-height:1.6;margin:0 0 28px;max-width:34ch;}
@@ -191,10 +196,11 @@ img{display:block;max-width:100%;}
 .gate button:hover{background:var(--accent);}
 .gate-err{color:var(--accent);font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;margin:14px 0 0;display:none;}
 .gate-err.show{display:block;}
-.gate-back{display:inline-block;margin-top:28px;font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
+.gate-back{display:inline-block;margin-top:24px;font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
 .gate-back:hover{color:var(--accent);}
 </style>
 <script src="../theme.js"></script>
+<script src="../to-top.js"></script>
 </head>
 <body>
 
@@ -210,19 +216,19 @@ img{display:block;max-width:100%;}
       <button type="submit">Unlock &rarr;</button>
       <p class="gate-err" id="gateErr">Incorrect password &mdash; please try again.</p>
     </form>
-    <a class="gate-back" href="../index.html#work">&larr; Return to Selected Works</a>
+    <a class="gate-back" href="../home.html#work">&larr; Return to Selected Works</a>
   </div>
 </div>
 
 <!-- NAV -->
 <header class="nav">
   <div class="wrap nav-inner">
-    <a class="brand" href="../index.html"><b>Fergal Keane</b><span>UI/UX</span></a>
+    <a class="brand" href="../home.html"><b>Fergal Keane</b><span>UI/UX</span></a>
     <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
     <nav class="nav-links" id="navLinks">
-      <a href="../index.html#work">Work</a>
-      <a href="../Resume.html">Resumé</a>
-      <a href="../index.html#contact">Contact</a>
+      <a href="../home.html#work">Work</a>
+      <a href="../Experience.html">Experience</a>
+      <a href="../home.html#contact">Contact</a>
       </nav>
   </div>
 </header>
@@ -230,7 +236,7 @@ img{display:block;max-width:100%;}
 <main>
 <!-- BACK -->
 <div class="wrap backbar">
-  <a class="back-link" href="../index.html#work">&larr; Selected Works</a>
+  <a class="back-link" href="../home.html#work">&larr; Selected Works</a>
 </div>
 
 <!-- HERO -->
@@ -317,7 +323,7 @@ img{display:block;max-width:100%;}
         </div>
         <div class="frame">
           <div class="frame-bar"><i></i><i></i><i></i><span class="fb-url">app.realworld.skytek.com / sign-in</span></div>
-          <img src="../shots/RealWorld_Login.png" alt="Real World sign-in screen" loading="lazy">
+          <img src="../images/realworld/RealWorld_Login.png" alt="Real World sign-in screen" loading="lazy">
         </div>
       </article>
 
@@ -331,7 +337,7 @@ img{display:block;max-width:100%;}
         </div>
         <div class="frame">
           <div class="frame-bar"><i></i><i></i><i></i><span class="fb-url">app.realworld.skytek.com / dashboard</span></div>
-          <img src="../shots/RealWorld_Main_Dashboard.png" alt="Real World main dashboard overview" loading="lazy">
+          <img src="../images/realworld/RealWorld_Main_Dashboard.png" alt="Real World main dashboard overview" loading="lazy">
         </div>
       </article>
 
@@ -345,7 +351,7 @@ img{display:block;max-width:100%;}
         </div>
         <div class="frame">
           <div class="frame-bar"><i></i><i></i><i></i><span class="fb-url">app.realworld.skytek.com / marine</span></div>
-          <img src="../shots/RealWorld_Marine_Dashboard.png" alt="Real World marine overview with live vessel map" loading="lazy">
+          <img src="../images/realworld/RealWorld_Marine_Dashboard.png" alt="Real World marine overview with live vessel map" loading="lazy">
         </div>
       </article>
 
@@ -359,7 +365,7 @@ img{display:block;max-width:100%;}
         </div>
         <div class="frame">
           <div class="frame-bar"><i></i><i></i><i></i><span class="fb-url">app.realworld.skytek.com / marine / vessel</span></div>
-          <img src="../shots/RealWorld_Vessel_Details.png" alt="Real World vessel detail page for Fresh Breeze" loading="lazy">
+          <img src="../images/realworld/RealWorld_Vessel_Details.png" alt="Real World vessel detail page for Fresh Breeze" loading="lazy">
         </div>
       </article>
 
@@ -374,12 +380,12 @@ img{display:block;max-width:100%;}
         <div>
           <div class="frame">
             <div class="frame-bar"><i></i><i></i><i></i><span class="fb-url">app.realworld.skytek.com / aviation</span></div>
-            <img src="../shots/RealWorld_Aviation_Dashboard.png" alt="Real World aviation overview" loading="lazy">
+            <img src="../images/realworld/RealWorld_Aviation_Dashboard.png" alt="Real World aviation overview" loading="lazy">
           </div>
           <div class="shot-pair">
             <div class="frame">
               <div class="frame-bar"><i></i><i></i><i></i><span class="fb-url">/ aviation / LAX</span></div>
-              <img src="../shots/RealWorld_Airport_Details.png" alt="Real World airport detail for Los Angeles International" loading="lazy">
+              <img src="../images/realworld/RealWorld_Airport_Details.png" alt="Real World airport detail for Los Angeles International" loading="lazy">
             </div>
             <div style="display:flex;align-items:center;">
               <p class="case-p" style="font-size:14.5px;">The airport view answers the underwriter's real question &mdash; <em>how much value is sitting on the ground right now?</em> &mdash; with portfolio aircraft, exposure by coverage type and a live map of arriving and parked aircraft.</p>
@@ -398,7 +404,7 @@ img{display:block;max-width:100%;}
         </div>
         <div class="frame">
           <div class="frame-bar"><i></i><i></i><i></i><span class="fb-url">app.realworld.skytek.com / property</span></div>
-          <img src="../shots/RealWorld_Property_Dashboard.png" alt="Real World property overview with weather risk" loading="lazy">
+          <img src="../images/realworld/RealWorld_Property_Dashboard.png" alt="Real World property overview with weather risk" loading="lazy">
         </div>
       </article>
 
@@ -412,7 +418,7 @@ img{display:block;max-width:100%;}
         </div>
         <div class="frame">
           <div class="frame-bar"><i></i><i></i><i></i><span class="fb-url">app.realworld.skytek.com / cargo</span></div>
-          <img src="../shots/RealWorld_Cargo_Dashboard.png" alt="Real World cargo voyage analysis" loading="lazy">
+          <img src="../images/realworld/RealWorld_Cargo_Dashboard.png" alt="Real World cargo voyage analysis" loading="lazy">
         </div>
       </article>
 
@@ -474,7 +480,7 @@ img{display:block;max-width:100%;}
     </div>
     <div class="footbar">
       <p class="lbl">&copy; 2026 Design by Fergal Keane</p>
-      <a class="lbl" href="../index.html#work">Back to Selected Works &nearr;</a>
+      <a class="lbl" href="../home.html#work">Back to Selected Works &nearr;</a>
     </div>
   </div>
 </section>

@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<!-- Locked case study: keep out of search indexes. Delete this line if the password gate is removed. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="googlebot" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BlueDrop Medical — Case Study · Fergal Keane</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,7 +52,7 @@ img{display:block;max-width:100%;}
 .nav-toggle{display:none;}
 
 /* —— BACK —— */
-.backbar{padding:30px 0 0;}
+.backbar{padding:30px var(--pad) 0;}
 .back-link{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
 .back-link:hover{color:var(--accent);}
 
@@ -198,10 +201,12 @@ img{display:block;max-width:100%;}
 }
 
 /* —— PASSWORD GATE —— */
-.gate{position:fixed;inset:0;z-index:999;background:var(--paper);display:flex;align-items:center;justify-content:center;padding:24px;}
+.gate{position:fixed;inset:0;z-index:999;background:rgba(12,12,12,.5);backdrop-filter:blur(9px) saturate(120%);display:flex;align-items:center;justify-content:center;padding:24px;animation:gateIn .22s ease both;}
+@keyframes gateIn{from{opacity:0}to{opacity:1}}
+@keyframes gateCardIn{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:none}}
 .gate.hidden{display:none;}
-.gate-card{max-width:430px;width:100%;}
-.gate-lock{width:56px;height:56px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink);margin-bottom:30px;}
+.gate-card{max-width:440px;width:100%;background:var(--paper);border:1px solid var(--line);box-shadow:0 34px 90px rgba(0,0,0,.32);padding:clamp(28px,4vw,44px);animation:gateCardIn .3s cubic-bezier(.2,.7,.3,1) both;}
+.gate-lock{width:52px;height:52px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink);margin-bottom:24px;}
 .gate-card .lbl{display:block;margin-bottom:14px;}
 .gate-card h2{font-family:var(--font-display);font-weight:300;font-size:31px;line-height:1.14;letter-spacing:-.015em;margin:0 0 12px;}
 .gate-sub{color:var(--muted);font-size:14px;line-height:1.6;margin:0 0 28px;max-width:34ch;}
@@ -212,10 +217,11 @@ img{display:block;max-width:100%;}
 .gate button:hover{background:var(--accent);}
 .gate-err{color:var(--accent);font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;margin:14px 0 0;display:none;}
 .gate-err.show{display:block;}
-.gate-back{display:inline-block;margin-top:28px;font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
+.gate-back{display:inline-block;margin-top:24px;font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
 .gate-back:hover{color:var(--accent);}
 </style>
 <script src="../theme.js"></script>
+<script src="../to-top.js"></script>
 </head>
 <body>
 
@@ -231,19 +237,19 @@ img{display:block;max-width:100%;}
       <button type="submit">Unlock &rarr;</button>
       <p class="gate-err" id="gateErr">Incorrect password &mdash; please try again.</p>
     </form>
-    <a class="gate-back" href="../index.html#work">&larr; Return to Selected Works</a>
+    <a class="gate-back" href="../home.html#work">&larr; Return to Selected Works</a>
   </div>
 </div>
 
 <!-- NAV -->
 <header class="nav">
   <div class="wrap nav-inner">
-    <a class="brand" href="../index.html"><b>Fergal Keane</b><span>UI/UX</span></a>
+    <a class="brand" href="../home.html"><b>Fergal Keane</b><span>UI/UX</span></a>
     <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
     <nav class="nav-links" id="navLinks">
-      <a href="../index.html#work">Work</a>
-      <a href="../Resume.html">Resumé</a>
-      <a href="../index.html#contact">Contact</a>
+      <a href="../home.html#work">Work</a>
+      <a href="../Experience.html">Experience</a>
+      <a href="../home.html#contact">Contact</a>
       </nav>
   </div>
 </header>
@@ -251,14 +257,14 @@ img{display:block;max-width:100%;}
 <main>
 <!-- BACK -->
 <div class="wrap backbar">
-  <a class="back-link" href="../index.html#work">&larr; Selected Works</a>
+  <a class="back-link" href="../home.html#work">&larr; Selected Works</a>
 </div>
 
 <!-- HERO -->
 <section class="hero" data-screen-label="Hero">
   <div class="wrap">
     <div class="hero-banner">
-      <img class="hero-bg" src="../shots/BlueDrop_Hero.jpg" alt="A patient sitting on the floor, holding their bare foot">
+      <img class="hero-bg" src="../images/bluedrop/BlueDrop_Hero.jpg" alt="A patient sitting on the floor, holding their bare foot">
       <div class="hero-shade"></div>
       <div class="hero-content">
         <div>
@@ -334,7 +340,7 @@ img{display:block;max-width:100%;}
     <div class="symbol">
       <div class="panel dark">
         <div class="panel-pad dark"><span class="lbl">Concept</span><h3>Company + Patient Journey = BlueDrop</h3></div>
-        <div class="img-frame"><img src="../shots/BlueDrop_Concept.png" alt="Brand concept: the drop plus the patient-journey loop equals the BlueDrop mark"></div>
+        <div class="img-frame"><img src="../images/bluedrop/BlueDrop_Concept.png" alt="Brand concept: the drop plus the patient-journey loop equals the BlueDrop mark"></div>
       </div>
       <div class="panel">
         <div class="panel-pad"><span class="lbl">Meaning</span><h3>Drop · Loop · Detection</h3></div>
@@ -347,11 +353,11 @@ img{display:block;max-width:100%;}
     <div class="construct-pair">
       <div class="panel">
         <div class="panel-pad"><span class="lbl">Construction</span><h3>Gradient build</h3></div>
-        <div class="img-frame"><img src="../shots/BlueDrop_Construct_Gradient.png" alt="Geometric construction of the BlueDrop symbol, gradient version"></div>
+        <div class="img-frame"><img src="../images/bluedrop/BlueDrop_Construct_Gradient.png" alt="Geometric construction of the BlueDrop symbol, gradient version"></div>
       </div>
       <div class="panel">
         <div class="panel-pad"><span class="lbl">Geometry</span><h3>Grid &amp; proportion</h3></div>
-        <div class="img-frame"><img src="../shots/BlueDrop_Construct_Light.png" alt="Geometric construction grid of the BlueDrop symbol"></div>
+        <div class="img-frame"><img src="../images/bluedrop/BlueDrop_Construct_Light.png" alt="Geometric construction grid of the BlueDrop symbol"></div>
       </div>
     </div>
   </div>
@@ -369,11 +375,11 @@ img{display:block;max-width:100%;}
     <div class="lockups">
       <div class="panel">
         <div class="panel-pad"><span class="lbl">Primary Lockup</span><h3>Horizontal</h3></div>
-        <div class="img-frame"><img src="../shots/BlueDrop_Lockup_H.png" alt="BlueDrop Medical horizontal logo lockup"></div>
+        <div class="img-frame"><img src="../images/bluedrop/BlueDrop_Lockup_H.png" alt="BlueDrop Medical horizontal logo lockup"></div>
       </div>
       <div class="panel">
         <div class="panel-pad"><span class="lbl">Secondary Lockup</span><h3>Stacked</h3></div>
-        <div class="img-frame"><img src="../shots/BlueDrop_Lockup_V.png" alt="BlueDrop Medical stacked logo lockup"></div>
+        <div class="img-frame"><img src="../images/bluedrop/BlueDrop_Lockup_V.png" alt="BlueDrop Medical stacked logo lockup"></div>
       </div>
     </div>
 
@@ -410,7 +416,7 @@ img{display:block;max-width:100%;}
         </div>
         <div class="frame scroll">
           <div class="frame-bar"><i></i><i></i><i></i><span class="fb-url">bluedropmedical.com</span></div>
-          <div class="scroll-body"><img src="../shots/BlueDrop_Web_1.png" alt="BlueDrop Medical homepage, full length" loading="lazy"></div>
+          <div class="scroll-body"><img src="../images/bluedrop/BlueDrop_Web_1.png" alt="BlueDrop Medical homepage, full length" loading="lazy"></div>
         </div>
       </article>
 
@@ -423,7 +429,7 @@ img{display:block;max-width:100%;}
         </div>
         <div class="frame scroll">
           <div class="frame-bar"><i></i><i></i><i></i><span class="fb-url">bluedropmedical.com</span></div>
-          <div class="scroll-body"><img src="../shots/BlueDrop_Web_2.png" alt="BlueDrop Medical homepage variant with How It Works, team and news" loading="lazy"></div>
+          <div class="scroll-body"><img src="../images/bluedrop/BlueDrop_Web_2.png" alt="BlueDrop Medical homepage variant with How It Works, team and news" loading="lazy"></div>
         </div>
       </article>
     </div>
@@ -447,7 +453,7 @@ img{display:block;max-width:100%;}
     </div>
     <div class="footbar">
       <p class="lbl">&copy; 2026 Design by Fergal Keane</p>
-      <a class="lbl" href="../index.html#work">Back to Selected Works &nearr;</a>
+      <a class="lbl" href="../home.html#work">Back to Selected Works &nearr;</a>
     </div>
   </div>
 </section>

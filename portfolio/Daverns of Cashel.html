@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daverns of Cashel — Case Study · Fergal Keane</title>
+<title>Daverns of Cashel: Case Study · Fergal Keane</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Cormorant+Garamond:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -50,7 +50,7 @@ img{display:block;max-width:100%;}
 .nav-toggle{display:none;}
 
 /* —— BACK —— */
-.backbar{padding:30px 0 0;}
+.backbar{padding:30px var(--pad) 0;}
 .back-link{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
 .back-link:hover{color:var(--accent);}
 
@@ -126,7 +126,9 @@ img{display:block;max-width:100%;}
 .frame img{display:block;width:100%;height:auto;}
 
 .shot-pair{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:18px;}
-@media(max-width:760px){.shot-pair{grid-template-columns:1fr;}}
+.shot-pair .frame.scroll{max-height:560px;}
+.shot-pair .frame.scroll .scroll-body{max-height:522px;}
+@media(max-width:760px){.shot-pair{grid-template-columns:1fr;gap:26px;}.shot-pair .frame.scroll{max-height:460px;}.shot-pair .frame.scroll .scroll-body{max-height:422px;}}
 
 /* —— DESIGN SYSTEM —— */
 .ds-grid{display:grid;grid-template-columns:1.05fr .82fr;gap:clamp(36px,5vw,72px);align-items:start;}
@@ -191,18 +193,19 @@ img{display:block;max-width:100%;}
 }
 </style>
 <script src="../theme.js"></script>
+<script src="../to-top.js"></script>
 </head>
 <body>
 
 <!-- NAV -->
 <header class="nav">
   <div class="wrap nav-inner">
-    <a class="brand" href="../index.html"><b>Fergal Keane</b><span>UI/UX</span></a>
+    <a class="brand" href="../home.html"><b>Fergal Keane</b><span>UI/UX</span></a>
     <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
     <nav class="nav-links" id="navLinks">
-      <a href="../index.html#work">Work</a>
-      <a href="../Resume.html">Resumé</a>
-      <a href="../index.html#contact">Contact</a>
+      <a href="../home.html#work">Work</a>
+      <a href="../Experience.html">Experience</a>
+      <a href="../home.html#contact">Contact</a>
       </nav>
   </div>
 </header>
@@ -210,14 +213,14 @@ img{display:block;max-width:100%;}
 <main>
 <!-- BACK -->
 <div class="wrap backbar">
-  <a class="back-link" href="../index.html#work">&larr; Selected Works</a>
+  <a class="back-link" href="../home.html#work">&larr; Selected Works</a>
 </div>
 
 <!-- HERO -->
 <section class="hero" data-screen-label="Hero">
   <div class="wrap">
     <div class="hero-banner">
-      <img class="hero-bg" src="../shots/Daverns_Heritage.jpg" alt="The Rock of Cashel rising above Co. Tipperary, home of Daverns since 1926">
+      <img class="hero-bg" src="../images/daverns/Daverns_Heritage.jpg" alt="The Rock of Cashel rising above Co. Tipperary, home of Daverns since 1926">
       <div class="hero-shade"></div>
       <div class="hero-content">
         <div>
@@ -226,7 +229,7 @@ img{display:block;max-width:100%;}
             <span class="est">Est&#xAA; 1926</span>
           </div>
           <h1 class="hero-title">Daverns<small>Of Cashel</small></h1>
-          <p class="hero-tagline">A century-old family house of luxury fashion &amp; personal styling in Cashel, Co.&nbsp;Tipperary &mdash; reimagined as a considered designer-led eCommerce experience.</p>
+          <p class="hero-tagline">A century-old family house of luxury fashion &amp; personal styling in Cashel, Co.&nbsp;Tipperary, reimagined as a considered designer-led eCommerce experience.</p>
         </div>
         <div class="hero-meta">
           <div><p class="lbl">Year</p><p class="mv">2021</p></div>
@@ -244,7 +247,7 @@ img{display:block;max-width:100%;}
     <div class="case-grid">
       <aside class="case-meta">
         <div class="meta-item"><p class="lbl">The Role</p><p class="meta-val">Lead UI / UX Designer</p></div>
-        <div class="meta-item"><p class="lbl">Client</p><p class="meta-val">Daverns of Cashel &mdash; Luxury Fashion &amp; Styling</p></div>
+        <div class="meta-item"><p class="lbl">Client</p><p class="meta-val">Daverns of Cashel / Luxury Fashion &amp; Styling</p></div>
         <div class="meta-item">
           <p class="lbl">Focus Areas</p>
           <ul class="check-list">
@@ -262,18 +265,18 @@ img{display:block;max-width:100%;}
       </aside>
       <div class="case-content">
         <div class="case-block">
-          <span class="lbl">01 &mdash; The Challenge</span>
+          <span class="lbl">01 / The Challenge</span>
           <h2 class="case-h">A trusted high-street institution with almost no presence online.</h2>
-          <p class="case-p">Since 1926 Daverns had built its name on personal service &mdash; fittings, styling advice and a carefully curated wall of designer labels on Main Street, Cashel. But that experience lived entirely in-store. Their small web presence couldn't carry the brand's quality, surface twenty-plus designer houses, or reassure a customer spending &euro;345 on a coat they couldn't try on.</p>
+          <p class="case-p">Since 1926 Daverns had built its name on personal service: fittings, styling advice and a carefully curated wall of designer labels on Main Street, Cashel. But that experience lived entirely in-store. Their small web presence couldn't carry the brand's quality, surface twenty-plus designer houses, or reassure a customer spending &euro;345 on a coat they couldn't try on.</p>
         </div>
         <div class="case-block">
-          <span class="lbl">02 &mdash; The Solution</span>
+          <span class="lbl">02 / The Solution</span>
           <h2 class="case-h">A heritage-led storefront that sells the way Daverns does in person.</h2>
-          <p class="case-p">The redesign treats the shop's founding mark &mdash; the crown, the 1926 date, the deep navy and gold &mdash; as the spine of the whole experience. Editorial brand storytelling, a designer-first discovery model and generous product photography recreate the curated, advisory feel of the store, while virtual appointments bring the styling service itself online.</p>
+          <p class="case-p">The redesign treats the shop's founding mark (the crown, the 1926 date, the deep navy and gold) as the spine of the whole experience. Editorial brand storytelling, a designer-first discovery model and generous product photography recreate the curated, advisory feel of the store, while virtual appointments bring the styling service itself online.</p>
         </div>
         <div class="impact">
-          <span class="lbl">03 &mdash; Impact</span>
-          <h2>A full <em>menswear &amp; womenswear</em> catalogue and 20+ luxury designer houses brought online &mdash; with virtual styling carried over from the shop floor.</h2>
+          <span class="lbl">03 / Impact</span>
+          <h2>A full <em>menswear &amp; womenswear</em> catalogue and 20+ luxury designer houses brought online, with virtual styling carried over from the shop floor.</h2>
         </div>
       </div>
     </div>
@@ -284,9 +287,9 @@ img{display:block;max-width:100%;}
 <section class="case-section">
   <div class="wrap">
     <div class="sec-head">
-      <span class="lbl">02.1 &mdash; The Product</span>
+      <span class="lbl">02.1 / The Product</span>
       <h2 class="sec-title">A guided walk through Daverns of Cashel</h2>
-      <p class="sec-lead">From the welcome storefront down to a single garment, every screen leads with the brand and the designer name first, then the product &mdash; the same order of trust a customer feels walking through the door on Main Street.</p>
+      <p class="sec-lead">From the welcome storefront down to a single garment, every screen leads with the brand and the designer name first, then the product: the same order of trust a customer feels walking through the door on Main Street.</p>
     </div>
 
     <div class="shots">
@@ -296,12 +299,12 @@ img{display:block;max-width:100%;}
         <div class="shot-cap">
           <p class="shot-num">01 / Storefront</p>
           <h3>The welcome, set in brand</h3>
-          <p>The homepage opens with a styling-led welcome and "The Daverns Promise" &mdash; a founder's note on luxury clothing and personal service &mdash; before stepping into luxury brands for men and women. It establishes heritage and curation before a single price appears.</p>
+          <p>The homepage opens with a styling-led welcome and "The Daverns Promise" (a founder's note on luxury clothing and personal service) before stepping into luxury brands for men and women. It establishes heritage and curation before a single price appears.</p>
           <div class="shot-tags"><span>Brand Story</span><span>Editorial</span><span>Curation</span></div>
         </div>
         <div class="frame scroll">
           <div class="frame-bar"><i></i><i></i><i></i><span class="fb-url">davernsofcashel.com</span></div>
-          <div class="scroll-body"><img src="../shots/Daverns_Home.png" alt="Daverns of Cashel homepage" loading="lazy"></div>
+          <div class="scroll-body"><img src="../images/daverns/Daverns_Home.png" alt="Daverns of Cashel homepage" loading="lazy"></div>
         </div>
       </article>
 
@@ -310,17 +313,17 @@ img{display:block;max-width:100%;}
         <div class="shot-cap">
           <p class="shot-num">02 / Departments</p>
           <h3>Two front doors, one language</h3>
-          <p>Menswear and womenswear each get a full-bleed editorial landing, then split into Clothing, Footwear, Accessories and Brands across an identical four-tile grid. The structure is shared so a returning customer never has to relearn the shop &mdash; only the imagery changes.</p>
+          <p>Menswear and womenswear each get a full-bleed editorial landing, then split into Clothing, Footwear, Accessories and Brands across an identical four-tile grid. The structure is shared so a returning customer never has to relearn the shop; only the imagery changes.</p>
           <div class="shot-tags"><span>Department Landing</span><span>Shared IA</span><span>Category Tiles</span></div>
         </div>
-        <div class="shot-pair" style="grid-template-columns:1fr 1fr;">
-          <div class="frame scroll" style="max-height:560px;">
+        <div class="shot-pair">
+          <div class="frame scroll">
             <div class="frame-bar"><i></i><i></i><i></i><span class="fb-url">/ mens</span></div>
-            <div class="scroll-body" style="max-height:522px;"><img src="../shots/Daverns_Mens.png" alt="Daverns menswear landing page" loading="lazy"></div>
+            <div class="scroll-body"><img src="../images/daverns/Daverns_Mens.png" alt="Daverns menswear landing page" loading="lazy"></div>
           </div>
-          <div class="frame scroll" style="max-height:560px;">
+          <div class="frame scroll">
             <div class="frame-bar"><i></i><i></i><i></i><span class="fb-url">/ womens</span></div>
-            <div class="scroll-body" style="max-height:522px;"><img src="../shots/Daverns_Womens.png" alt="Daverns womenswear landing page" loading="lazy"></div>
+            <div class="scroll-body"><img src="../images/daverns/Daverns_Womens.png" alt="Daverns womenswear landing page" loading="lazy"></div>
           </div>
         </div>
       </article>
@@ -330,12 +333,12 @@ img{display:block;max-width:100%;}
         <div class="shot-cap">
           <p class="shot-num">03 / Designers</p>
           <h3>Shop the label, not the rack</h3>
-          <p>Daverns customers come for the names &mdash; Gant, Mos Mosh, Farah, Basler, Joseph Ribkoff. The Designers page makes that the primary way to browse: a single tap-able wall of twenty-plus houses, each a portrait-led tile, framed by the brand's own "we have always broken the mould" line.</p>
+          <p>Daverns customers come for the names: Gant, Mos Mosh, Farah, Basler, Joseph Ribkoff. The Designers page makes that the primary way to browse: a single tap-able wall of twenty-plus houses, each a portrait-led tile, framed by the brand's own "we have always broken the mould" line.</p>
           <div class="shot-tags"><span>Brand Discovery</span><span>20+ Houses</span><span>Visual Index</span></div>
         </div>
         <div class="frame scroll">
           <div class="frame-bar"><i></i><i></i><i></i><span class="fb-url">/ designers</span></div>
-          <div class="scroll-body"><img src="../shots/Daverns_Designers.png" alt="Daverns designers index page" loading="lazy"></div>
+          <div class="scroll-body"><img src="../images/daverns/Daverns_Designers.png" alt="Daverns designers index page" loading="lazy"></div>
         </div>
       </article>
 
@@ -344,12 +347,12 @@ img{display:block;max-width:100%;}
         <div class="shot-cap">
           <p class="shot-num">04 / Listing</p>
           <h3>Refine without losing the room</h3>
-          <p>The listing view pairs a calm three-up product grid with a full "Refine search" rail &mdash; brand, price, colour, category and size, each with live counts. Filters stay quiet and gold-accented so the clothing, not the controls, holds the customer's eye.</p>
+          <p>The listing view pairs a calm three-up product grid with a full "Refine search" rail: brand, price, colour, category and size, each with live counts. Filters stay quiet and gold-accented so the clothing, not the controls, holds the customer's eye.</p>
           <div class="shot-tags"><span>Faceted Filtering</span><span>Live Counts</span><span>Product Grid</span></div>
         </div>
         <div class="frame scroll">
           <div class="frame-bar"><i></i><i></i><i></i><span class="fb-url">/ womens / basler</span></div>
-          <div class="scroll-body"><img src="../shots/Daverns_Category.png" alt="Daverns category listing with refine search" loading="lazy"></div>
+          <div class="scroll-body"><img src="../images/daverns/Daverns_Category.png" alt="Daverns category listing with refine search" loading="lazy"></div>
         </div>
       </article>
 
@@ -358,12 +361,12 @@ img{display:block;max-width:100%;}
         <div class="shot-cap">
           <p class="shot-num">05 / Product</p>
           <h3>Everything you'd ask an assistant</h3>
-          <p>The product page answers in-store questions on screen: a large gallery with alternate angles, stock status, colour and size selectors, a sizing guide, and full description, fabric and delivery tabs &mdash; with previous / next products flanking the frame so browsing never dead-ends.</p>
+          <p>The product page answers in-store questions on screen: a large gallery with alternate angles, stock status, colour and size selectors, a sizing guide, and full description, fabric and delivery tabs, with previous / next products flanking the frame so browsing never dead-ends.</p>
           <div class="shot-tags"><span>Gallery</span><span>Variants</span><span>Sizing Guide</span></div>
         </div>
         <div class="frame scroll">
           <div class="frame-bar"><i></i><i></i><i></i><span class="fb-url">/ womens / basler-washable-jacket</span></div>
-          <div class="scroll-body"><img src="../shots/Daverns_Product.png" alt="Daverns product detail page for Basler washable jacket" loading="lazy"></div>
+          <div class="scroll-body"><img src="../images/daverns/Daverns_Product.png" alt="Daverns product detail page for Basler washable jacket" loading="lazy"></div>
         </div>
       </article>
 
@@ -376,28 +379,28 @@ img{display:block;max-width:100%;}
   <div class="wrap">
     <div class="ds-grid">
       <div>
-        <span class="lbl" style="display:block;margin-bottom:20px;">02.2 &mdash; Design System</span>
+        <span class="lbl" style="display:block;margin-bottom:20px;">02.2 / Design System</span>
         <h2 class="sec-title">Built around a 1926 mark</h2>
         <p class="ds-lead">The crown emblem, the deep navy and a single restrained gold do the heavy lifting. They carry from the storefront hero to category filters and footer, so the whole shop feels like one tailored house rather than a template.</p>
         <div class="swatches">
           <div class="swatch">
             <span class="chip" style="background:#2b3340;"></span>
-            <div><p class="sname">Daverns Navy</p><p class="lbl">#2B3340 &mdash; Brand / Headers</p></div>
+            <div><p class="sname">Daverns Navy</p><p class="lbl">#2B3340 / Brand, Headers</p></div>
           </div>
           <div class="swatch">
             <span class="chip" style="background:#a9893f;"></span>
-            <div><p class="sname">Heritage Gold</p><p class="lbl">#A9893F &mdash; Accent / Price / CTA</p></div>
+            <div><p class="sname">Heritage Gold</p><p class="lbl">#A9893F / Accent, Price, CTA</p></div>
           </div>
           <div class="swatch">
             <span class="chip" style="background:#cfc6b6;"></span>
-            <div><p class="sname">Cashel Stone</p><p class="lbl">#CFC6B6 &mdash; Footer / Marble</p></div>
+            <div><p class="sname">Cashel Stone</p><p class="lbl">#CFC6B6 / Footer, Marble</p></div>
           </div>
         </div>
       </div>
       <div class="type-card">
         <span class="lbl">Brand &amp; Interface Type</span>
         <p class="tspec">Aa</p>
-        <p class="tdesc">A high-contrast serif sets the wordmark and section titles with quiet authority, paired with a clean humanist sans for navigation, product copy and prices &mdash; legible across long catalogue pages.</p>
+        <p class="tdesc">A high-contrast serif sets the wordmark and section titles with quiet authority, paired with a clean humanist sans for navigation, product copy and prices, legible across long catalogue pages.</p>
         <div class="tdiv"></div>
         <div class="type-foot">
           <div><p class="tspec2">Cormorant &middot; Archivo</p><span class="lbl">Display &amp; Interface</span></div>
@@ -425,7 +428,7 @@ img{display:block;max-width:100%;}
     </div>
     <div class="footbar">
       <p class="lbl">&copy; 2026 Design by Fergal Keane</p>
-      <a class="lbl" href="../index.html#work">Back to Selected Works &nearr;</a>
+      <a class="lbl" href="../home.html#work">Back to Selected Works &nearr;</a>
     </div>
   </div>
 </section>
